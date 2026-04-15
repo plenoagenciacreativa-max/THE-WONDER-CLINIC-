@@ -235,6 +235,107 @@
       letter-spacing: 3px;
     }
 
+    /* ─── HERO FRANCHISE CTA (right side) ────── */
+    .hero-franchise-cta {
+      position: absolute;
+      right: 56px;
+      bottom: 140px;
+      z-index: 3;
+      opacity: 0;
+    }
+    .hero-glow-btn {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .hero-glow-btn-inner {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--ff);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--black);
+      background: linear-gradient(135deg, #EDD98A 0%, var(--gold) 45%, #A0761A 100%);
+      padding: 20px 44px;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow:
+        0 0 24px rgba(201,168,76,.55),
+        0 0 60px rgba(201,168,76,.25),
+        0 4px 20px rgba(0,0,0,.4);
+      transition: box-shadow .4s ease, transform .3s ease;
+    }
+    /* shimmer sweep */
+    .hero-glow-btn-inner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -75%;
+      width: 50%; height: 100%;
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(255,255,255,.35) 50%,
+        transparent 100%
+      );
+      transform: skewX(-18deg);
+      animation: glow-shimmer 2.8s ease-in-out infinite;
+    }
+    @keyframes glow-shimmer {
+      0%   { left: -75%; opacity: 0; }
+      15%  { opacity: 1; }
+      85%  { opacity: 1; }
+      100% { left: 125%; opacity: 0; }
+    }
+    /* arrow icon */
+    .hero-glow-btn-inner::after {
+      content: '→';
+      font-size: 14px;
+      font-weight: 400;
+      transition: transform .3s ease;
+    }
+    .hero-glow-btn:hover .hero-glow-btn-inner {
+      box-shadow:
+        0 0 40px rgba(201,168,76,.75),
+        0 0 90px rgba(201,168,76,.35),
+        0 6px 28px rgba(0,0,0,.45);
+      transform: translateY(-3px);
+    }
+    .hero-glow-btn:hover .hero-glow-btn-inner::after {
+      transform: translateX(4px);
+    }
+    /* ambient pulse ring */
+    .hero-glow-ring {
+      position: absolute;
+      inset: -1px;
+      border: 1px solid rgba(201,168,76,.5);
+      pointer-events: none;
+      animation: glow-ring-pulse 2.8s ease-in-out infinite;
+    }
+    @keyframes glow-ring-pulse {
+      0%, 100% { opacity: .5; transform: scale(1); }
+      50%       { opacity: 0; transform: scale(1.06); }
+    }
+    .hero-glow-label {
+      font-family: var(--ff);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(248,246,242,.35);
+    }
+    @media (max-width: 1024px) {
+      .hero-franchise-cta { right: 32px; bottom: 120px; }
+    }
+    @media (max-width: 768px) {
+      .hero-franchise-cta { display: none; }
+    }
+
     /* ─── TICKER ─────────────────────────────── */
     .ticker { background: var(--gold); overflow: hidden; padding: 14px 0; border-top: 1px solid #8B6A14; }
     .ticker-track { display: flex; white-space: nowrap; will-change: transform; }
@@ -1496,6 +1597,18 @@
       </div>
     </div>
   </div>
+
+  <!-- Franchise CTA — right side -->
+  <div class="hero-franchise-cta" id="heroFranchiseCta">
+    <a href="#contacto-franquicia" class="hero-glow-btn">
+      <div class="hero-glow-btn-inner">
+        <span class="hero-glow-ring"></span>
+        Abrir mi centro ahora
+      </div>
+      <span class="hero-glow-label">Modelo de franquicia</span>
+    </a>
+  </div>
+
 </section>
 
 <!-- ═══ TICKER ══════════════════════════════════════ -->
@@ -2503,7 +2616,8 @@
     .to('.hero-title-line', { opacity:1, y:0, duration:.9, stagger:.12, ease:'power3.out' }, '-=.3')
     .to('#heroSub',     { opacity:1, y:0, duration:.7, ease:'power2.out' }, '-=.5')
     .to('#heroDesc',    { opacity:1, y:0, duration:.7, ease:'power2.out' }, '-=.5')
-    .to('#heroActions', { opacity:1, y:0, duration:.6, ease:'power2.out' }, '-=.4');
+    .to('#heroActions', { opacity:1, y:0, duration:.6, ease:'power2.out' }, '-=.4')
+    .to('#heroFranchiseCta', { opacity:1, y:0, duration:.8, ease:'power2.out' }, '-=.3');
 
   // Ticker
   const ticker = document.getElementById('ticker');
