@@ -200,8 +200,8 @@
       letter-spacing: -0.025em;
       margin-bottom: 36px;
     }
-    .hero-title-line { display: block; }
-    .hero-title-inner { display: block; opacity: 0; transform: translateY(28px); }
+    .hero-title-line { display: block; opacity: 0; transform: translateY(22px); }
+    .hero-title-inner { display: block; }
     .hero-sub {
       font-family: var(--ff);
       font-size: 13px;
@@ -1367,7 +1367,7 @@
     /* ─── HERO TITLE ─────────────────────────────────── */
     .hero-title {
       font-size: clamp(64px, 10.5vw, 148px) !important;
-      line-height: 1.12 !important;
+      line-height: 1.06 !important;
       letter-spacing: -0.025em !important;
       font-weight: 900 !important;
     }
@@ -2500,7 +2500,7 @@
   const htl = gsap.timeline({ delay: 0.2 });
   htl
     .to('#heroTag',     { opacity:1, y:0, duration:.7, ease:'power2.out' })
-    .to('.hero-title-inner', { opacity:1, y:0, duration:.9, stagger:.1, ease:'power3.out' }, '-=.3')
+    .to('.hero-title-line', { opacity:1, y:0, duration:.9, stagger:.12, ease:'power3.out' }, '-=.3')
     .to('#heroSub',     { opacity:1, y:0, duration:.7, ease:'power2.out' }, '-=.5')
     .to('#heroDesc',    { opacity:1, y:0, duration:.7, ease:'power2.out' }, '-=.5')
     .to('#heroActions', { opacity:1, y:0, duration:.6, ease:'power2.out' }, '-=.4');
