@@ -239,7 +239,8 @@
     .hero-franchise-cta {
       position: absolute;
       right: 56px;
-      bottom: 140px;
+      top: 50%;
+      transform: translateY(-50%);
       z-index: 3;
       opacity: 0;
     }
@@ -256,13 +257,13 @@
       align-items: center;
       gap: 14px;
       font-family: var(--ff);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 800;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--black);
       background: linear-gradient(135deg, #EDD98A 0%, var(--gold) 45%, #A0761A 100%);
-      padding: 20px 44px;
+      padding: 22px 48px;
       cursor: pointer;
       overflow: hidden;
       box-shadow:
@@ -330,7 +331,7 @@
       color: rgba(248,246,242,.35);
     }
     @media (max-width: 1024px) {
-      .hero-franchise-cta { right: 32px; bottom: 120px; }
+      .hero-franchise-cta { right: 32px; }
     }
     @media (max-width: 768px) {
       .hero-franchise-cta { display: none; }
@@ -2617,7 +2618,7 @@
     .to('#heroSub',     { opacity:1, y:0, duration:.7, ease:'power2.out' }, '-=.5')
     .to('#heroDesc',    { opacity:1, y:0, duration:.7, ease:'power2.out' }, '-=.5')
     .to('#heroActions', { opacity:1, y:0, duration:.6, ease:'power2.out' }, '-=.4')
-    .to('#heroFranchiseCta', { opacity:1, y:0, duration:.8, ease:'power2.out' }, '-=.3');
+    .to('#heroFranchiseCta', { opacity:1, duration:.8, ease:'power2.out' }, '-=.3');
 
   // Ticker
   const ticker = document.getElementById('ticker');
