@@ -983,6 +983,180 @@
     }
     .footer-social a:hover { color: var(--gold); }
 
+    /* ─── FRANCHISE CSS ──────────────────────── */
+    /* alias so franchise classes resolve --ff-display */
+    :root { --ff-display: var(--ff); }
+
+    /* Franchise divider banner */
+    #franquicia-divider {
+      padding: 100px 0;
+      background: var(--gold);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .fdiv-bg {
+      position: absolute;
+      font-family: var(--ff);
+      font-size: clamp(80px,14vw,180px);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: rgba(0,0,0,.07);
+      top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      pointer-events:none;
+      white-space:nowrap;
+      letter-spacing:-4px;
+    }
+    .fdiv-inner { position: relative; }
+    .fdiv-inner h2 {
+      font-family: var(--ff);
+      font-size: clamp(28px,5vw,72px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -1.5px;
+      line-height: .92;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+    .fdiv-inner p {
+      font-family: var(--ff-body);
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(8,8,8,.65);
+      max-width: 480px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .fdiv-inner .btn-black {
+      display: inline-block;
+      font-family: var(--ff);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      padding: 17px 44px;
+      background: var(--black);
+      color: var(--gold);
+      border: 1px solid var(--black);
+      cursor: pointer;
+      transition: background .3s, color .3s, border-color .3s;
+    }
+    .fdiv-inner .btn-black:hover {
+      background: transparent;
+      color: var(--black);
+      border-color: var(--black);
+    }
+
+    /* Conocenos */
+    #conocenos { padding: 140px 0; }
+    .conocenos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .conocenos-left h2 { font-family: var(--ff); font-size: clamp(36px,5vw,64px); font-weight: 900; text-transform: uppercase; line-height: .95; letter-spacing: -1px; margin-bottom: 36px; }
+    .conocenos-left p { font-family: var(--ff-body); font-size: 15px; font-weight: 300; line-height: 1.9; color: var(--muted); margin-bottom: 16px; }
+    .conocenos-left .gold-bar { width: 48px; height: 2px; background: var(--gold); margin-bottom: 32px; }
+    .conocenos-left h3 { font-family: var(--ff); font-size: clamp(18px,2.2vw,26px); font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 20px; }
+    .conocenos-img { position: relative; overflow: hidden; }
+    .conocenos-img img { width: 100%; height: 520px; object-fit: cover; object-position: center top; display: block; filter: grayscale(15%) contrast(1.05); }
+    .conocenos-img::after { content: ''; position: absolute; inset: 0; border: 1px solid var(--gold-line); pointer-events: none; }
+    .conocenos-img-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 32px; background: linear-gradient(to top, rgba(8,8,8,.9) 0%, transparent 100%); }
+    .conocenos-img-caption p { font-family: var(--ff); font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+
+    /* Treatments */
+    #tratamientos { padding: 0 0 140px; }
+    .treats-header { text-align: center; margin-bottom: 72px; }
+    .treats-header h2 { font-family: var(--ff); font-size: clamp(36px,5vw,68px); font-weight: 900; text-transform: uppercase; letter-spacing: -1.5px; line-height: .92; margin-bottom: 20px; }
+    .treats-header p { font-family: var(--ff-body); font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--muted); max-width: 540px; margin: 0 auto; }
+    .treats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .treat-card { background: var(--black-2); padding: 52px 44px; border: 1px solid var(--gold-line); position: relative; overflow: hidden; transition: border-color .4s, transform .4s; }
+    .treat-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0; transition: opacity .4s; }
+    .treat-card:hover { border-color: rgba(201,168,76,.4); transform: translateY(-3px); }
+    .treat-card:hover::after { opacity: 1; }
+    .treat-num { font-family: var(--ff); font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--gold); margin-bottom: 24px; }
+    .treat-card h3 { font-family: var(--ff); font-size: 19px; font-weight: 800; text-transform: uppercase; letter-spacing: -.3px; line-height: 1.15; margin-bottom: 16px; }
+    .treat-card p { font-family: var(--ff-body); font-size: 13px; font-weight: 300; line-height: 1.85; color: var(--muted); }
+
+    /* Musculo manifesto */
+    #musculo { padding: 120px 0; background: var(--black-2); border-top: 1px solid var(--gold-line); border-bottom: 1px solid var(--gold-line); overflow: hidden; position: relative; }
+    .musculo-bg { position: absolute; font-family: var(--ff); font-size: clamp(100px,18vw,220px); font-weight: 900; text-transform: uppercase; color: rgba(201,168,76,.035); white-space: nowrap; top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; letter-spacing: -4px; }
+    .musculo-inner { position: relative; max-width: 860px; margin: 0 auto; text-align: center; }
+    .musculo-inner h2 { font-family: var(--ff); font-size: clamp(28px,4vw,52px); font-weight: 900; text-transform: uppercase; letter-spacing: -1px; line-height: 1.05; margin-bottom: 36px; }
+    .musculo-inner p { font-family: var(--ff-body); font-size: 16px; font-weight: 300; line-height: 1.9; color: var(--muted); max-width: 680px; margin: 0 auto; }
+
+    /* Modelo franquicia */
+    #modelo { padding: 140px 0; }
+    .modelo-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
+    .modelo-left h2 { font-family: var(--ff); font-size: clamp(36px,5vw,64px); font-weight: 900; text-transform: uppercase; letter-spacing: -1.5px; line-height: .93; margin-bottom: 32px; }
+    .modelo-left p { font-family: var(--ff-body); font-size: 15px; font-weight: 300; line-height: 1.9; color: var(--muted); margin-bottom: 18px; }
+    .modelo-left .btn { margin-top: 16px; }
+    .modelo-pillars { display: flex; flex-direction: column; gap: 0; }
+    .pillar { padding: 36px 0; border-bottom: 1px solid var(--gold-line); display: grid; grid-template-columns: 48px 1fr; gap: 24px; align-items: start; }
+    .pillar:first-child { border-top: 1px solid var(--gold-line); }
+    .pillar-n { font-family: var(--ff); font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--gold); padding-top: 3px; }
+    .pillar h3 { font-family: var(--ff); font-size: 13px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; line-height: 1.4; }
+    .pillar p { font-family: var(--ff-body); font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--muted); }
+
+    /* Modelo financiero */
+    #financiero { padding: 0 0 140px; }
+    .fin-header { text-align: center; margin-bottom: 80px; }
+    .fin-header h2 { font-family: var(--ff); font-size: clamp(36px,5vw,68px); font-weight: 900; text-transform: uppercase; letter-spacing: -1.5px; line-height: .92; margin-bottom: 20px; }
+    .fin-header p { font-family: var(--ff-body); font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--muted); max-width: 520px; margin: 0 auto; }
+    .fin-numbers { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-bottom: 2px; }
+    .fin-num-card { background: var(--black-2); border: 1px solid var(--gold-line); padding: 52px 36px; text-align: center; position: relative; }
+    .fin-num-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .fin-big { font-family: var(--ff); font-size: clamp(36px,5vw,60px); font-weight: 900; line-height: 1; margin-bottom: 10px; display: block; }
+    .fin-label { font-family: var(--ff); font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); }
+    .fin-details { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; }
+    .fin-row { background: var(--black-3); border: 1px solid var(--gold-line); padding: 36px 44px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 24px; }
+    .fin-row-title { font-family: var(--ff); font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+    .fin-row-desc { font-family: var(--ff-body); font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--muted); }
+    .fin-row-value { font-family: var(--ff); font-size: 20px; font-weight: 900; color: var(--gold); white-space: nowrap; text-align: right; }
+
+    /* Stats franquicia */
+    #stats-franquicia { background: var(--black-2); border-top: 1px solid var(--gold-line); border-bottom: 1px solid var(--gold-line); }
+    .stats-row { display: grid; grid-template-columns: repeat(4,1fr); }
+    .stat { padding: 80px 40px; text-align: center; border-right: 1px solid var(--gold-line); }
+    .stat:last-child { border-right: none; }
+    .stat-n { font-family: var(--ff); font-size: clamp(44px,6vw,80px); font-weight: 900; line-height: 1; letter-spacing: -2px; display: block; margin-bottom: 10px; }
+    .stat-lbl { font-family: var(--ff); font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+
+    /* Por qué */
+    #porque { padding: 140px 0; }
+    .porque-header { margin-bottom: 80px; }
+    .porque-header h2 { font-family: var(--ff); font-size: clamp(36px,5.5vw,80px); font-weight: 900; text-transform: uppercase; letter-spacing: -2px; line-height: .9; max-width: 800px; }
+    .porque-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .porque-card { background: var(--black-2); border: 1px solid var(--gold-line); padding: 52px 44px; position: relative; overflow: hidden; transition: border-color .35s; }
+    .porque-card:hover { border-color: rgba(201,168,76,.5); }
+    .pcard-n { font-family: var(--ff); font-size: 64px; font-weight: 900; line-height: 1; color: rgba(201,168,76,.1); margin-bottom: 16px; letter-spacing: -2px; }
+    .porque-card h3 { font-family: var(--ff); font-size: 14px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; line-height: 1.35; }
+    .porque-card p { font-family: var(--ff-body); font-size: 13px; font-weight: 300; line-height: 1.85; color: var(--muted); }
+
+    /* Contacto franquicia */
+    #contacto-franquicia { padding: 140px 0; }
+    .contacto-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 100px; align-items: start; }
+    .contacto-left h2 { font-family: var(--ff); font-size: clamp(36px,4.5vw,64px); font-weight: 900; text-transform: uppercase; letter-spacing: -1.5px; line-height: .93; margin-bottom: 28px; }
+    .contacto-left p { font-family: var(--ff-body); font-size: 15px; font-weight: 300; line-height: 1.9; color: var(--muted); margin-bottom: 48px; }
+    .cinfo { display: flex; flex-direction: column; gap: 20px; }
+    .cinfo-row { display: flex; gap: 20px; align-items: flex-start; }
+    .cinfo-lbl { font-family: var(--ff); font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); min-width: 72px; padding-top: 1px; }
+    .cinfo-val { font-family: var(--ff-body); font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.6; }
+    .cform { display: flex; flex-direction: column; gap: 20px; }
+    .cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .fgroup { display: flex; flex-direction: column; gap: 7px; }
+    .fgroup label { font-family: var(--ff); font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); }
+    .fgroup input, .fgroup select, .fgroup textarea { background: var(--black-2); border: 1px solid var(--gold-line); color: var(--white); font-family: var(--ff-body); font-size: 14px; font-weight: 300; padding: 15px 18px; outline: none; appearance: none; -webkit-appearance: none; transition: border-color .3s; }
+    .fgroup input::placeholder, .fgroup textarea::placeholder { color: var(--muted2); }
+    .fgroup input:focus, .fgroup select:focus, .fgroup textarea:focus { border-color: var(--gold); }
+    .fgroup textarea { resize: vertical; min-height: 130px; }
+    .fgroup select option { background: var(--black-2); }
+    .btn-submit { font-family: var(--ff); font-size: 10px; font-weight: 800; letter-spacing: 3.5px; text-transform: uppercase; padding: 19px 0; background: var(--gold); color: var(--black); border: 1px solid var(--gold); cursor: pointer; width: 100%; margin-top: 4px; transition: background .3s, color .3s, transform .25s; }
+    .btn-submit:hover { background: transparent; color: var(--gold); transform: translateY(-2px); }
+
+    /* Quote franquicia */
+    #quote-franquicia { padding: 140px 0; background: var(--black-2); border-top: 1px solid var(--gold-line); border-bottom: 1px solid var(--gold-line); text-align: center; position: relative; overflow: hidden; }
+    .qf-bg { position: absolute; font-family: var(--ff); font-size: clamp(120px,22vw,280px); font-weight: 900; text-transform: uppercase; color: rgba(201,168,76,.03); top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap;letter-spacing:-6px; }
+    .qf-text { position: relative; font-family: var(--ff); font-size: clamp(22px,3.5vw,46px); font-weight: 900; text-transform: uppercase; letter-spacing: -1px; line-height: 1.1; max-width: 900px; margin: 0 auto 28px; }
+    .qf-source { font-family: var(--ff); font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); }
+
     /* ─── RESPONSIVE ─────────────────────────── */
     @media (max-width: 1024px) {
       .container { padding: 0 32px; }
@@ -992,6 +1166,11 @@
       .longevity-stats { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; }
       .footer-brand { grid-column: 1/-1; }
+      .conocenos-grid, .modelo-layout, .contacto-layout { gap: 60px; }
+      .fin-numbers { grid-template-columns: repeat(2,1fr); }
+      .stats-row { grid-template-columns: repeat(2,1fr); }
+      .stats-row .stat:nth-child(2) { border-right: none; }
+      .porque-cards { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
       :root { --nav-h: 68px; }
@@ -1009,7 +1188,16 @@
       .longevity-stats { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; gap: 40px; }
       .footer-bottom { flex-direction: column; gap: 16px; }
-      #manifiesto, #metodo, #facial, #planes, #franquicia-cta { padding: 80px 0; }
+      #manifiesto, #metodo, #facial, #planes { padding: 80px 0; }
+      .conocenos-grid, .modelo-layout, .contacto-layout { grid-template-columns: 1fr; }
+      .treats-grid, .porque-cards { grid-template-columns: 1fr; }
+      .fin-numbers { grid-template-columns: 1fr 1fr; }
+      .fin-details { grid-template-columns: 1fr; }
+      .fin-row { grid-template-columns: 1fr; gap: 8px; }
+      .fin-row-value { text-align: left; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .cform-row { grid-template-columns: 1fr; }
+      #tratamientos, #conocenos, #modelo, #financiero, #porque, #contacto-franquicia { padding: 80px 0; }
     }
   </style>
 </head>
@@ -1027,7 +1215,7 @@
         <li><a href="#metodo">El Método</a></li>
         <li><a href="#resultados">Resultados</a></li>
         <li><a href="#planes">Planes</a></li>
-        <li><a href="franquicia.html" class="nav-cta">Franquicias</a></li>
+        <li><a href="#franquicia" class="nav-cta">Franquicias</a></li>
       </ul>
     </div>
   </div>
@@ -1052,7 +1240,7 @@
         </p>
         <div class="hero-actions" id="heroActions">
           <a href="#planes" class="btn btn-gold">Comienza tu transformación</a>
-          <a href="franquicia.html" class="btn btn-outline">Quiero abrir mi centro</a>
+          <a href="#franquicia" class="btn btn-outline">Quiero abrir mi centro</a>
         </div>
       </div>
     </div>
@@ -1490,23 +1678,393 @@
 </section>
 
 <!-- ═══ CTA FRANQUICIA ══════════════════════════════ -->
-<section id="franquicia-cta">
-  <div class="fcta-bg" aria-hidden="true">FRANCHISE</div>
+<!-- ═══ FRANCHISE DIVIDER BANNER ═════════════════════ -->
+<section id="franquicia" style="scroll-margin-top: var(--nav-h);">
+  <div id="franquicia-divider">
+    <div class="fdiv-bg" aria-hidden="true">FRANCHISE</div>
+    <div class="fdiv-inner reveal">
+      <h2>Abre tu propio<br/>centro Wonder Clinic.</h2>
+      <p>Modelo probado, inversión optimizada y demanda creciente. Únete a la red de franquiciados que está transformando el mercado del bienestar premium.</p>
+      <a href="#contacto-franquicia" class="btn-black">Quiero ser franquiciado</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONÓCENOS ═══════════════════════════════════════ -->
+<section id="conocenos">
   <div class="container">
-    <div class="fcta-inner">
-      <p class="eyebrow reveal" style="justify-content:center;">Para inversores y emprendedores</p>
+    <div class="conocenos-grid">
+      <div class="conocenos-left">
+        <p class="eyebrow reveal">Conócenos</p>
+        <h2 class="reveal">
+          Somos el<br/>
+          equipo<br/>
+          <span class="gold-text">Wonder.</span>
+        </h2>
+        <div class="gold-bar reveal"></div>
+        <h3 class="reveal">Innovamos sin descanso desde Madrid para clínicas líderes del mundo.</h3>
+        <p class="reveal">
+          Ingenieros, médicos y visionarios unidos para redefinir la estética. Diseñamos tecnología avanzada que transforma músculo, grasa y piel con precisión científica.
+        </p>
+        <p class="reveal">
+          Creamos resultados reales, medibles y repetibles, impulsando una nueva era donde la belleza nace del músculo y evoluciona cada día con nosotros y contigo siempre.
+        </p>
+      </div>
+      <div class="conocenos-img reveal">
+        <img src="bg team.png" alt="Equipo Wonder Clinic" />
+        <div class="conocenos-img-caption">
+          <p>Equipo Wonder — Ingenieros, médicos &amp; visionarios</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ TRATAMIENTOS / BENEFICIOS ════════════════════════ -->
+<section id="tratamientos">
+  <div class="container">
+    <div class="treats-header">
+      <p class="eyebrow reveal" style="justify-content:center;">Lo que ofreces en tu clínica</p>
+      <h2 class="reveal">Superpoderes<br/><span class="gold-text">para tus músculos.</span></h2>
+      <p class="reveal">Descubre lo que el cuerpo es capaz de hacer cuando activas todo su potencial. No es un entrenamiento convencional, es una experiencia que despierta capacidades que nunca habías sentido antes.</p>
+    </div>
+    <div class="treats-grid">
+      <div class="treat-card reveal">
+        <p class="treat-num">01</p>
+        <h3>Entrena sin entrenar</h3>
+        <p>Nuestra tecnología activa la musculatura de forma inteligente, generando contracciones profundas que normalmente no puedes alcanzar por ti mismo. Cómodo, eficaz y una nueva forma de conseguir resultados reales sin esfuerzo tradicional.</p>
+      </div>
+      <div class="treat-card reveal">
+        <p class="treat-num">02</p>
+        <h3>Todo el cuerpo en solo una hora a la semana</h3>
+        <p>Con sesiones diseñadas para trabajar múltiples grupos musculares simultáneamente, puedes transformar tu cuerpo de forma global dedicando solo una hora a la semana. Más eficiencia, más resultados, menos tiempo invertido.</p>
+      </div>
+      <div class="treat-card reveal">
+        <p class="treat-num">03</p>
+        <h3>Fuerza, resistencia, equilibrio</h3>
+        <p>No se trata solo de estética. Es rendimiento, estabilidad y control corporal. Aumenta tu fuerza, mejora tu resistencia y recupera el equilibrio muscular que tu cuerpo necesita.</p>
+      </div>
+      <div class="treat-card reveal">
+        <p class="treat-num">04</p>
+        <h3>El músculo es la base de la longevidad</h3>
+        <p>Un cuerpo fuerte es un cuerpo que dura más y vive mejor. El desarrollo muscular mejora el metabolismo, protege las articulaciones y reduce procesos inflamatorios. Una inversión directa en salud y calidad de vida.</p>
+      </div>
+      <div class="treat-card reveal">
+        <p class="treat-num">05</p>
+        <h3>Más músculo, menos grasa</h3>
+        <p>Al aumentar la masa muscular, el cuerpo se vuelve más eficiente consumiendo energía. Esto favorece la reducción de grasa de forma progresiva y natural, transformando la composición corporal hacia una versión más fuerte y definida.</p>
+      </div>
+      <div class="treat-card reveal">
+        <p class="treat-num">06</p>
+        <h3>Resultados desde el primer día</h3>
+        <p>Desde la primera sesión se nota cómo el cuerpo responde. La activación muscular es inmediata y la sensación de trabajo es real. No hay que esperar semanas para entender que funciona. Lo sientes en el momento y lo ves en el espejo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MANIFESTO MUSCULAR ═══════════════════════════════ -->
+<section id="musculo">
+  <div class="musculo-bg" aria-hidden="true">MÚSCULO</div>
+  <div class="container">
+    <div class="musculo-inner">
+      <p class="eyebrow reveal" style="justify-content:center;">Nuestra filosofía</p>
       <h2 class="reveal">
-        ¿Quieres abrir<br/>
-        tu propio centro<br/>
-        <span class="gold-text">Wonder Clinic?</span>
+        El músculo es la base<br/>
+        de la <span class="gold-text">salud</span> y la<br/>
+        <span class="gold-text">longevidad.</span>
       </h2>
       <p class="reveal">
-        Modelo de negocio probado, inversión optimizada y demanda creciente. Únete a la red de franquiciados que está transformando el mercado del bienestar premium antes de que el mercado madure.
+        El músculo es la base real de la salud, la longevidad y el equilibrio del cuerpo. Un sistema muscular activo mejora la movilidad, aumenta la fuerza y protege frente al deterioro. Pero también impacta en la mente: eleva el autocontrol, refuerza la confianza y estabiliza el estado emocional. Desarrollar músculo es construir bienestar físico y mental duradero.
       </p>
-      <div class="fcta-actions reveal">
-        <a href="franquicia.html" class="btn btn-gold">Quiero abrir mi centro</a>
-        <a href="franquicia.html#contacto" class="btn-ghost">Ver el modelo de franquicia</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MODELO FRANQUICIA ════════════════════════════════ -->
+<section id="modelo">
+  <div class="container">
+    <div class="modelo-layout">
+      <div class="modelo-left">
+        <p class="eyebrow reveal">Modelo de franquicia</p>
+        <h2 class="reveal">
+          Un modelo que<br/>
+          convierte tecnología<br/>
+          <span class="gold-text">en ingresos.</span>
+        </h2>
+        <p class="reveal">
+          The Wonder Clinic transforma sesiones de 25 minutos en una fuente constante de facturación. Alta rotación, tiempos optimizados y demanda creciente permiten generar ingresos recurrentes desde el inicio, con una estructura operativa simple y altamente eficiente.
+        </p>
+        <p class="reveal">
+          No estás comprando un negocio tradicional. Estás entrando en una nueva categoría que une estética, salud y tecnología.
+        </p>
+        <a href="#contacto-franquicia" class="btn btn-gold reveal">Quiero ser franquiciado</a>
       </div>
+      <div class="modelo-pillars">
+        <div class="pillar reveal">
+          <span class="pillar-n">01</span>
+          <div>
+            <h3>Alta rentabilidad por metro cuadrado</h3>
+            <p>No necesitas grandes espacios ni grandes equipos humanos. Con un local optimizado y pocos recursos, puedes alcanzar una facturación elevada. Diseñado para maximizar cada metro cuadrado y cada hora de trabajo.</p>
+          </div>
+        </div>
+        <div class="pillar reveal">
+          <span class="pillar-n">02</span>
+          <div>
+            <h3>Demanda creciente, mercado sin saturar</h3>
+            <p>El concepto de músculo como base de la estética es una tendencia global en expansión. Estás entrando en una categoría nueva, con poca competencia real y una fuerte atracción tanto en clientes estéticos como de bienestar y rendimiento.</p>
+          </div>
+        </div>
+        <div class="pillar reveal">
+          <span class="pillar-n">03</span>
+          <div>
+            <h3>Ingresos recurrentes y predecibles</h3>
+            <p>Los clientes no vienen una vez, repiten. El modelo está diseñado para generar continuidad mediante planes de sesiones, lo que estabiliza los ingresos y permite una previsión financiera clara desde los primeros meses.</p>
+          </div>
+        </div>
+        <div class="pillar reveal">
+          <span class="pillar-n">04</span>
+          <div>
+            <h3>Operativa simple, escalabilidad real</h3>
+            <p>No necesitas una estructura compleja. Formación clara, protocolos definidos y tecnología automatizada permiten operar con facilidad. Además, el modelo es replicable, facilitando la expansión a múltiples centros.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ MODELO FINANCIERO ════════════════════════════════ -->
+<section id="financiero">
+  <div class="container">
+    <div class="fin-header">
+      <p class="eyebrow reveal" style="justify-content:center;">Modelo financiero</p>
+      <h2 class="reveal">Los números<br/><span class="gold-text">hablan solos.</span></h2>
+      <p class="reveal">Inversión optimizada, estructura ligera y ticket medio alto. Un modelo diseñado para que cada metro cuadrado y cada sesión trabajen para ti desde el primer día.</p>
+    </div>
+    <div class="fin-numbers">
+      <div class="fin-num-card reveal">
+        <span class="fin-big gold-text" data-target="70">0<small style="font-size:.45em">K€</small></span>
+        <span class="fin-label">Inversión inicial</span>
+      </div>
+      <div class="fin-num-card reveal">
+        <span class="fin-big gold-text">30<small style="font-size:.45em">m²</small></span>
+        <span class="fin-label">Espacio mínimo</span>
+      </div>
+      <div class="fin-num-card reveal">
+        <span class="fin-big gold-text">800<small style="font-size:.45em">€</small></span>
+        <span class="fin-label">Ticket medio / cliente</span>
+      </div>
+      <div class="fin-num-card reveal">
+        <span class="fin-big gold-text" data-target="10">0<small style="font-size:.45em">K€</small></span>
+        <span class="fin-label">Facturación mensual</span>
+      </div>
+    </div>
+    <div class="fin-details" style="margin-top:2px;">
+      <div class="fin-row reveal">
+        <div>
+          <p class="fin-row-title">Inversión inicial optimizada</p>
+          <p class="fin-row-desc">Obra civil (~50.000 €), mobiliario (~9.000 €) y proyecto (~9.000 €). Los equipos principales se entregan sin coste, reduciendo significativamente la inversión real de entrada.</p>
+        </div>
+        <span class="fin-row-value gold-text">~70.000 €</span>
+      </div>
+      <div class="fin-row reveal">
+        <div>
+          <p class="fin-row-title">Estructura de personal reducida</p>
+          <p class="fin-row-desc">Solo 1–2 empleados necesarios. Coste aproximado de 2.000 € mensuales por empleado. Modelo eficiente que minimiza costes fijos y simplifica la gestión operativa diaria.</p>
+        </div>
+        <span class="fin-row-value gold-text">1–2 empleados</span>
+      </div>
+      <div class="fin-row reveal">
+        <div>
+          <p class="fin-row-title">Costes operativos bajos</p>
+          <p class="fin-row-desc">Suministros, comunicaciones, limpieza, gestoría, seguros y software. Estructura ligera que mejora márgenes y permite una previsión financiera fiable.</p>
+        </div>
+        <span class="fin-row-value gold-text">~1.350 €/mes</span>
+      </div>
+      <div class="fin-row reveal">
+        <div>
+          <p class="fin-row-title">Consumibles mínimos</p>
+          <p class="fin-row-desc">Coste muy bajo tanto en tratamientos faciales como corporales (8–10 sesiones por tratamiento completo), lo que incrementa directamente la rentabilidad por cliente.</p>
+        </div>
+        <span class="fin-row-value gold-text">~20 €/trat.</span>
+      </div>
+      <div class="fin-row reveal">
+        <div>
+          <p class="fin-row-title">Estacionalidad favorable</p>
+          <p class="fin-row-desc">Alta demanda corporal de enero a julio y facial de septiembre a marzo, permitiendo mantener actividad constante y facturación estable durante todo el año.</p>
+        </div>
+        <span class="fin-row-value gold-text">12 meses</span>
+      </div>
+      <div class="fin-row reveal">
+        <div>
+          <p class="fin-row-title">Espacio y alquiler controlado</p>
+          <p class="fin-row-desc">Solo necesitas desde 30 m², con alquiler recomendado entre 1.500 € y 3.500 € mensuales. Permite abrir en ubicaciones estratégicas sin asumir riesgos excesivos.</p>
+        </div>
+        <span class="fin-row-value gold-text">1.500–3.500 €</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS FRANQUICIA ══════════════════════════════════ -->
+<section id="stats-franquicia">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat reveal">
+        <span class="stat-n gold-text" data-target="25">0<small style="font-size:.45em"> min</small></span>
+        <span class="stat-lbl">Duración de sesión</span>
+      </div>
+      <div class="stat reveal">
+        <span class="stat-n gold-text" data-target="800">0<small style="font-size:.45em">€</small></span>
+        <span class="stat-lbl">Ticket medio mensual</span>
+      </div>
+      <div class="stat reveal">
+        <span class="stat-n gold-text">1–2</span>
+        <span class="stat-lbl">Empleados necesarios</span>
+      </div>
+      <div class="stat reveal">
+        <span class="stat-n gold-text">24/7</span>
+        <span class="stat-lbl">Soporte franquiciado</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ POR QUÉ ═══════════════════════════════════════════ -->
+<section id="porque">
+  <div class="container">
+    <div class="porque-header">
+      <p class="eyebrow reveal">Por qué elegirnos</p>
+      <h2 class="reveal">
+        Invierte en el<br/>
+        <span class="gold-text">futuro</span> de<br/>
+        la estética.
+      </h2>
+    </div>
+    <div class="porque-cards">
+      <div class="porque-card reveal">
+        <p class="pcard-n">01</p>
+        <h3>Mercado sin saturar</h3>
+        <p>El concepto de músculo como base de la estética es una tendencia global en expansión. Con poca competencia real y una fuerte demanda creciente, estás entrando antes de que el mercado madure.</p>
+      </div>
+      <div class="porque-card reveal">
+        <p class="pcard-n">02</p>
+        <h3>Tecnología propietaria</h3>
+        <p>Equipos y protocolos exclusivos que garantizan resultados superiores. Los clientes lo sienten desde la primera sesión y repiten. La retención es el motor de los ingresos recurrentes.</p>
+      </div>
+      <div class="porque-card reveal">
+        <p class="pcard-n">03</p>
+        <h3>Marca premium de alto impacto</h3>
+        <p>The Wonder Clinic está diseñada desde el origen para atraer al cliente de alto valor. El posicionamiento visual y la experiencia de cliente generan deseo y son difícilmente replicables.</p>
+      </div>
+      <div class="porque-card reveal">
+        <p class="pcard-n">04</p>
+        <h3>Operativa eficiente y escalable</h3>
+        <p>Sesiones de 25 minutos, rotación alta, personal mínimo. El modelo está diseñado para maximizar cada metro cuadrado. Replicable con baja complejidad operativa.</p>
+      </div>
+      <div class="porque-card reveal">
+        <p class="pcard-n">05</p>
+        <h3>Ingresos recurrentes y estables</h3>
+        <p>Los clientes no vienen una sola vez. La primera sesión sorprende, la segunda convence, y a partir de ahí se convierte en parte de su rutina. Esto genera visibilidad financiera real a medio plazo.</p>
+      </div>
+      <div class="porque-card reveal">
+        <p class="pcard-n">06</p>
+        <h3>Soporte total desde el día uno</h3>
+        <p>Formación completa, marketing centralizado, gestor dedicado, diseño e interiorismo, software de gestión y acceso a la red de franquiciados. No estás solo en ningún momento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ QUOTE FRANQUICIA ══════════════════════════════════ -->
+<section id="quote-franquicia">
+  <div class="quote-bg-text" aria-hidden="true">WONDER</div>
+  <div class="container">
+    <p class="quote-text reveal">
+      "No estás comprando<br/>
+      un negocio tradicional.<br/>
+      Estás entrando en<br/>
+      <span class="gold-text">una nueva categoría."</span>
+    </p>
+    <p class="quote-source reveal">The Wonder Clinic — Franquicias</p>
+  </div>
+</section>
+
+<!-- ═══ CONTACTO FRANQUICIA ══════════════════════════════ -->
+<section id="contacto-franquicia">
+  <div class="container">
+    <div class="contacto-layout">
+      <div class="contacto-left">
+        <p class="eyebrow reveal">Contacto Franquicias</p>
+        <h2 class="reveal">
+          Da el<br/>
+          primer<br/>
+          <span class="gold-text">paso.</span>
+        </h2>
+        <p class="reveal">
+          Todo cambio comienza con una decisión. Rellena el formulario y uno de nuestros asesores de expansión se pondrá en contacto contigo para explicarte todos los detalles del modelo de franquicia.
+        </p>
+        <div class="cinfo reveal">
+          <div class="cinfo-row">
+            <span class="cinfo-lbl">Email</span>
+            <span class="cinfo-val">franquicias@thewonderclinic.com</span>
+          </div>
+          <div class="cinfo-row">
+            <span class="cinfo-lbl">Teléfono</span>
+            <span class="cinfo-val">+34 000 000 000</span>
+          </div>
+          <div class="cinfo-row">
+            <span class="cinfo-lbl">Horario</span>
+            <span class="cinfo-val">Lunes a Viernes, 9:00 – 18:00 h</span>
+          </div>
+        </div>
+      </div>
+      <form class="cform reveal" id="contactForm">
+        <div class="cform-row">
+          <div class="fgroup">
+            <label for="franq-nombre">Nombre</label>
+            <input type="text" id="franq-nombre" name="nombre" placeholder="Tu nombre" required />
+          </div>
+          <div class="fgroup">
+            <label for="franq-apellido">Apellido</label>
+            <input type="text" id="franq-apellido" name="apellido" placeholder="Tu apellido" required />
+          </div>
+        </div>
+        <div class="cform-row">
+          <div class="fgroup">
+            <label for="franq-email">Email</label>
+            <input type="email" id="franq-email" name="email" placeholder="tu@email.com" required />
+          </div>
+          <div class="fgroup">
+            <label for="franq-telefono">Teléfono</label>
+            <input type="tel" id="franq-telefono" name="telefono" placeholder="+34 600 000 000" />
+          </div>
+        </div>
+        <div class="fgroup">
+          <label for="franq-pais">País / Ciudad de interés</label>
+          <input type="text" id="franq-pais" name="pais" placeholder="España, México, Colombia..." />
+        </div>
+        <div class="fgroup">
+          <label for="franq-inversion">Capacidad de inversión</label>
+          <select id="franq-inversion" name="inversion">
+            <option value="" disabled selected>Selecciona un rango</option>
+            <option>Hasta 70.000 €</option>
+            <option>70.000 € – 120.000 €</option>
+            <option>Más de 120.000 €</option>
+            <option>Quiero más información primero</option>
+          </select>
+        </div>
+        <div class="fgroup">
+          <label for="franq-mensaje">Mensaje</label>
+          <textarea id="franq-mensaje" name="mensaje" placeholder="Cuéntanos sobre tu proyecto, experiencia en el sector o cualquier pregunta que tengas..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Solicitar información de franquicia</button>
+      </form>
     </div>
   </div>
 </section>
@@ -1527,7 +2085,7 @@
           <li><a href="#resultados">Resultados</a></li>
           <li><a href="#facial">Facial &amp; Skin</a></li>
           <li><a href="#planes">Planes</a></li>
-          <li><a href="franquicia.html">Franquicias</a></li>
+          <li><a href="#franquicia">Franquicias</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1610,12 +2168,18 @@
     x: '-8%', ease:'none',
     scrollTrigger: { trigger:'#quote', start:'top bottom', end:'bottom top', scrub:1 }
   });
-  gsap.to('.fcta-bg', {
-    x: '-8%', ease:'none',
-    scrollTrigger: { trigger:'#franquicia-cta', start:'top bottom', end:'bottom top', scrub:1 }
+  gsap.to('.musculo-bg', {
+    x: '-10%', ease:'none',
+    scrollTrigger: { trigger:'#musculo', start:'top bottom', end:'bottom top', scrub:1 }
+  });
+  document.querySelectorAll('#quote-franquicia .quote-bg-text').forEach(el => {
+    gsap.to(el, {
+      x: '-8%', ease:'none',
+      scrollTrigger: { trigger:'#quote-franquicia', start:'top bottom', end:'bottom top', scrub:1 }
+    });
   });
 
-  // Form
+  // Form — client contact
   document.getElementById('mainForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = this.querySelector('button[type=submit]');
@@ -1626,6 +2190,22 @@
     setTimeout(() => {
       btn.textContent = orig;
       btn.style.cssText = 'font-family:var(--ff);font-size:10px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;padding:19px 0;background:var(--gold);color:var(--black);border:1px solid var(--gold);cursor:pointer;width:100%;transition:background .3s,color .3s,transform .25s;';
+      btn.disabled = false;
+      this.reset();
+    }, 5000);
+  });
+
+  // Form — franchise contact
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('.btn-submit');
+    const orig = btn.textContent;
+    btn.textContent = 'Enviado — nos pondremos en contacto pronto';
+    btn.style.cssText = 'background:transparent;color:var(--gold);border-color:var(--gold);cursor:default;';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.style.cssText = '';
       btn.disabled = false;
       this.reset();
     }, 5000);
