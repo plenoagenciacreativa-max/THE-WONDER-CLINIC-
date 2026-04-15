@@ -1157,6 +1157,112 @@
     .qf-text { position: relative; font-family: var(--ff); font-size: clamp(22px,3.5vw,46px); font-weight: 900; text-transform: uppercase; letter-spacing: -1px; line-height: 1.1; max-width: 900px; margin: 0 auto 28px; }
     .qf-source { font-family: var(--ff); font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); }
 
+    /* ─── SECTION: CENTROS ──────────────────── */
+    #centros { padding: 140px 0; }
+    .centros-header { text-align: center; margin-bottom: 72px; }
+    .centros-header h2 {
+      font-family: var(--ff);
+      font-size: clamp(32px, 5vw, 64px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -1.5px;
+      line-height: .93;
+      margin-bottom: 20px;
+    }
+    .centros-header p {
+      font-family: var(--ff-body);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .centros-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .centro-card {
+      background: var(--black-2);
+      border: 1px solid var(--gold-line);
+      padding: 44px 40px;
+      position: relative;
+      transition: border-color .35s;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .centro-card:hover { border-color: rgba(201,168,76,.5); }
+    .centro-pais {
+      font-family: var(--ff);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .centro-pais::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .centro-name {
+      font-family: var(--ff);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+    .centro-divider {
+      width: 32px;
+      height: 1px;
+      background: var(--gold-line);
+      margin-bottom: 20px;
+    }
+    .centro-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+    .centro-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .centro-row-lbl {
+      font-family: var(--ff);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      flex-shrink: 0;
+      padding-top: 1px;
+      min-width: 44px;
+    }
+    .centro-row-val {
+      font-family: var(--ff-body);
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    .centro-row-val a {
+      color: var(--muted);
+      transition: color .3s;
+    }
+    .centro-row-val a:hover { color: var(--gold-light); }
+
     /* ─── RESPONSIVE ─────────────────────────── */
     @media (max-width: 1024px) {
       .container { padding: 0 32px; }
@@ -1171,6 +1277,7 @@
       .stats-row { grid-template-columns: repeat(2,1fr); }
       .stats-row .stat:nth-child(2) { border-right: none; }
       .porque-cards { grid-template-columns: 1fr 1fr; }
+      .centros-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
       :root { --nav-h: 68px; }
@@ -1197,7 +1304,8 @@
       .fin-row-value { text-align: left; }
       .stats-row { grid-template-columns: 1fr 1fr; }
       .cform-row { grid-template-columns: 1fr; }
-      #tratamientos, #conocenos, #modelo, #financiero, #porque, #contacto-franquicia { padding: 80px 0; }
+      #tratamientos, #conocenos, #modelo, #financiero, #porque, #contacto-franquicia, #centros { padding: 80px 0; }
+      .centros-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1214,6 +1322,7 @@
         <li><a href="#longevity">Longevity Hour®</a></li>
         <li><a href="#metodo">El Método</a></li>
         <li><a href="#resultados">Resultados</a></li>
+        <li><a href="#centros">Centros</a></li>
         <li><a href="#planes">Planes</a></li>
         <li><a href="#franquicia" class="nav-cta">Franquicias</a></li>
       </ul>
@@ -1615,6 +1724,130 @@
     </div>
   </div>
 </section>
+
+<!-- ═══ CENTROS ══════════════════════════════════════ -->
+<section id="centros">
+  <div class="container">
+
+    <div class="centros-header">
+      <p class="eyebrow reveal" style="justify-content:center;">Dónde encontrarnos</p>
+      <h2 class="reveal">Centros certificados<br/><span class="gold-text">Longevity Hour®</span></h2>
+      <p class="reveal">Encuentra tu centro Wonder Clinic más cercano y reserva tu primera sesión. Red en expansión internacional.</p>
+    </div>
+
+    <div class="centros-grid">
+
+      <!-- Santo Domingo -->
+      <div class="centro-card reveal">
+        <p class="centro-pais">República Dominicana</p>
+        <h3 class="centro-name">The Wonder Clinic<br/>Santo Domingo</h3>
+        <div class="centro-divider"></div>
+        <div class="centro-info">
+          <div class="centro-row">
+            <span class="centro-row-lbl">Dirección</span>
+            <span class="centro-row-val">Calle Heriberto Núñez 40 (Plaza Galipán), Julieta Morales, Santo Domingo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Liberec -->
+      <div class="centro-card reveal">
+        <p class="centro-pais">República Checa</p>
+        <h3 class="centro-name">Wonder Liberec<br/>Michaela Čechová</h3>
+        <div class="centro-divider"></div>
+        <div class="centro-info">
+          <div class="centro-row">
+            <span class="centro-row-lbl">Dirección</span>
+            <span class="centro-row-val">Sovova 584/2, 460 14 Liberec</span>
+          </div>
+          <div class="centro-row">
+            <span class="centro-row-lbl">Web</span>
+            <span class="centro-row-val"><a href="https://www.michaelacechova.cz" target="_blank" rel="noopener">michaelacechova.cz</a></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Belgrade Waterfront -->
+      <div class="centro-card reveal">
+        <p class="centro-pais">Serbia</p>
+        <h3 class="centro-name">Wonderful Wonder<br/>Belgrade Waterfront</h3>
+        <div class="centro-divider"></div>
+        <div class="centro-info">
+          <div class="centro-row">
+            <span class="centro-row-lbl">Dirección</span>
+            <span class="centro-row-val">Nikolaja Kravcova 6, Belgrado</span>
+          </div>
+          <div class="centro-row">
+            <span class="centro-row-lbl">Teléfono</span>
+            <span class="centro-row-val"><a href="tel:+38160306660">+381 60 30 666 00</a></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Utrecht -->
+      <div class="centro-card reveal">
+        <p class="centro-pais">Países Bajos</p>
+        <h3 class="centro-name">Iwondertraining BV<br/>Utrecht</h3>
+        <div class="centro-divider"></div>
+        <div class="centro-info">
+          <div class="centro-row">
+            <span class="centro-row-lbl">Dirección</span>
+            <span class="centro-row-val">29 Odenveltlaan, 3451 ZL Utrecht</span>
+          </div>
+          <div class="centro-row">
+            <span class="centro-row-lbl">Teléfono</span>
+            <span class="centro-row-val"><a href="tel:+31621410602">+31 6 21 41 06 02</a></span>
+          </div>
+          <div class="centro-row">
+            <span class="centro-row-lbl">Email</span>
+            <span class="centro-row-val"><a href="mailto:info@cybtraining.nl">info@cybtraining.nl</a></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wonder Space Beograd -->
+      <div class="centro-card reveal">
+        <p class="centro-pais">Serbia</p>
+        <h3 class="centro-name">Wonder Space<br/>Beograd</h3>
+        <div class="centro-divider"></div>
+        <div class="centro-info">
+          <div class="centro-row">
+            <span class="centro-row-lbl">Dirección</span>
+            <span class="centro-row-val">Rankeova 16, Vračar, Belgrado</span>
+          </div>
+          <div class="centro-row">
+            <span class="centro-row-lbl">Teléfono</span>
+            <span class="centro-row-val"><a href="tel:+381638337897">+381 63 833 78 97</a></span>
+          </div>
+          <div class="centro-row">
+            <span class="centro-row-lbl">Email</span>
+            <span class="centro-row-val"><a href="mailto:wonderspacebeograf@gmail.com">wonderspacebeograf@gmail.com</a></span>
+          </div>
+          <div class="centro-row">
+            <span class="centro-row-lbl">Web</span>
+            <span class="centro-row-val"><a href="https://www.wonderspace.rs" target="_blank" rel="noopener">wonderspace.rs</a></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Oviedo -->
+      <div class="centro-card reveal">
+        <p class="centro-pais">España</p>
+        <h3 class="centro-name">The Wonder Clinic<br/>Oviedo</h3>
+        <div class="centro-divider"></div>
+        <div class="centro-info">
+          <div class="centro-row">
+            <span class="centro-row-lbl">Dirección</span>
+            <span class="centro-row-val">Calle Posada Herrera, 6, Oviedo, Asturias</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
 
 <!-- ═══ CONTACTO FORM ════════════════════════════════ -->
 <section id="contacto-form" style="padding: 0 0 140px;">
@@ -2084,6 +2317,7 @@
           <li><a href="#metodo">El Método</a></li>
           <li><a href="#resultados">Resultados</a></li>
           <li><a href="#facial">Facial &amp; Skin</a></li>
+          <li><a href="#centros">Centros</a></li>
           <li><a href="#planes">Planes</a></li>
           <li><a href="#franquicia">Franquicias</a></li>
         </ul>
