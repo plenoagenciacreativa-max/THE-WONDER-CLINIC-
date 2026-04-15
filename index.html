@@ -3,34 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Wonder Clinic — Franquicias</title>
+  <title>The Wonder Clinic — Longevity Hour®</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <style>
-    /* ─── TOKENS ─────────────────────────────────── */
+    /* ─── TOKENS ─────────────────────────────── */
     :root {
-      --black:       #080808;
-      --black-2:     #111111;
-      --black-3:     #181818;
-      --gold:        #C9A84C;
-      --gold-light:  #E2C97E;
-      --gold-dim:    rgba(201,168,76,0.18);
-      --gold-line:   rgba(201,168,76,0.22);
-      --white:       #F8F6F2;
-      --muted:       rgba(248,246,242,0.5);
-      --muted2:      rgba(248,246,242,0.32);
-      --ff-display:  'Montserrat', sans-serif;
-      --ff-body:     'Inter', sans-serif;
-      --nav-h:       80px;
+      --black:      #080808;
+      --black-2:    #111111;
+      --black-3:    #181818;
+      --gold:       #C9A84C;
+      --gold-light: #E2C97E;
+      --gold-line:  rgba(201,168,76,0.22);
+      --white:      #F8F6F2;
+      --muted:      rgba(248,246,242,0.5);
+      --muted2:     rgba(248,246,242,0.28);
+      --ff:         'Montserrat', sans-serif;
+      --ff-body:    'Inter', sans-serif;
+      --nav-h:      80px;
     }
 
-    /* ─── RESET ───────────────────────────────────── */
+    /* ─── RESET ──────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; background: var(--black); }
     body {
@@ -40,27 +39,29 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-    img  { display: block; max-width: 100%; }
-    a    { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    a   { text-decoration: none; color: inherit; }
     ::selection { background: var(--gold); color: var(--black); }
     ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-track { background: var(--black); }
     ::-webkit-scrollbar-thumb { background: var(--gold); }
 
-    /* ─── HELPERS ─────────────────────────────────── */
-    .gold        { color: var(--gold); }
-    .gold-text   {
-      background: linear-gradient(120deg, var(--gold-light) 0%, var(--gold) 60%, #8B6A14 100%);
+    /* ─── HELPERS ────────────────────────────── */
+    .gold-text {
+      background: linear-gradient(120deg, var(--gold-light) 0%, var(--gold) 55%, #8B6A14 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .reveal      { opacity: 0; transform: translateY(36px); }
-
-    .container   { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
-
+    .reveal { opacity: 0; transform: translateY(36px); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-line) 25%, var(--gold-line) 75%, transparent);
+    }
     .eyebrow {
-      font-family: var(--ff-display);
+      font-family: var(--ff);
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 4px;
@@ -69,26 +70,14 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
-    .eyebrow::before {
-      content: '';
-      width: 28px;
-      height: 1px;
-      background: var(--gold);
-      flex-shrink: 0;
-    }
+    .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
 
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent 0%, var(--gold-line) 20%, var(--gold-line) 80%, transparent 100%);
-    }
-
-    /* ─── BUTTONS ─────────────────────────────────── */
+    /* ─── BUTTONS ────────────────────────────── */
     .btn {
       display: inline-block;
-      font-family: var(--ff-display);
+      font-family: var(--ff);
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 3.5px;
@@ -97,38 +86,27 @@
       cursor: pointer;
       transition: background .3s, color .3s, transform .25s;
     }
-    .btn-gold {
-      background: var(--gold);
-      color: var(--black);
-      border: 1px solid var(--gold);
+    .btn-gold  { background: var(--gold); color: var(--black); border: 1px solid var(--gold); }
+    .btn-gold:hover { background: transparent; color: var(--gold); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(248,246,242,.25); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--ff);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color .3s;
     }
-    .btn-gold:hover {
-      background: transparent;
-      color: var(--gold);
-      transform: translateY(-2px);
-    }
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 1px solid rgba(248,246,242,0.25);
-    }
-    .btn-outline:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      transform: translateY(-2px);
-    }
+    .btn-ghost::after { content: ''; width: 32px; height: 1px; background: currentColor; transition: width .3s; }
+    .btn-ghost:hover { color: var(--gold-light); }
+    .btn-ghost:hover::after { width: 52px; }
 
-    /* ─── NAV & HERO: flush-left overrides ──────────── */
-    #nav .container {
-      max-width: 100%;
-      padding: 0 48px;
-    }
-    #hero .container {
-      max-width: 100%;
-      padding: 0 48px;
-    }
-
-    /* ─── NAV ─────────────────────────────────────── */
+    /* ─── NAV ────────────────────────────────── */
     #nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -136,41 +114,21 @@
       height: var(--nav-h);
       display: flex;
       align-items: center;
-      transition: background .5s, border-color .5s, backdrop-filter .5s;
+      transition: background .5s, border-color .5s;
       border-bottom: 1px solid transparent;
     }
     #nav.scrolled {
-      background: rgba(8,8,8,.95);
+      background: rgba(8,8,8,.96);
       border-bottom-color: var(--gold-line);
       backdrop-filter: blur(16px);
     }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      padding-left: 0;
-    }
-    /* Logo always flush left */
-    .nav-inner > a:first-child {
-      margin-right: auto;
-      padding-right: 0;
-    }
-    .nav-logo {
-      height: 38px;
-      filter: invert(1);
-      opacity: .9;
-      transition: opacity .3s;
-    }
+    #nav .container { max-width: 100%; padding: 0 48px; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .nav-logo { height: 36px; filter: invert(1); opacity: .9; transition: opacity .3s; }
     .nav-logo:hover { opacity: 1; }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a {
-      font-family: var(--ff-display);
+      font-family: var(--ff);
       font-size: 10px;
       font-weight: 600;
       letter-spacing: 2.5px;
@@ -180,22 +138,19 @@
     }
     .nav-links a:hover { color: var(--gold-light); }
     .nav-cta {
-      font-family: var(--ff-display);
+      font-family: var(--ff);
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      padding: 11px 26px;
+      padding: 11px 24px;
       border: 1px solid var(--gold);
       color: var(--gold) !important;
       transition: background .3s, color .3s !important;
     }
-    .nav-cta:hover {
-      background: var(--gold) !important;
-      color: var(--black) !important;
-    }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--black) !important; }
 
-    /* ─── HERO ────────────────────────────────────── */
+    /* ─── HERO ───────────────────────────────── */
     #hero {
       position: relative;
       width: 100%;
@@ -214,18 +169,20 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, rgba(8,8,8,.85) 0%, rgba(8,8,8,.5) 55%, rgba(8,8,8,.1) 100%),
-        linear-gradient(to bottom, rgba(8,8,8,.05) 0%, rgba(8,8,8,.15) 40%, rgba(8,8,8,.9) 80%, rgba(8,8,8,1) 100%);
+        linear-gradient(to right, rgba(8,8,8,.9) 0%, rgba(8,8,8,.55) 50%, rgba(8,8,8,.1) 100%),
+        linear-gradient(to bottom, rgba(8,8,8,.05) 0%, rgba(8,8,8,.2) 45%, rgba(8,8,8,.92) 80%, rgba(8,8,8,1) 100%);
     }
     .hero-content {
       position: relative;
       z-index: 2;
-      padding-bottom: 96px;
+      padding-bottom: 100px;
       width: 100%;
       text-align: left;
     }
+    #hero .container { max-width: 100%; padding: 0 48px; }
+    .hero-text-wrap { max-width: 52%; }
     .hero-tag {
-      font-family: var(--ff-display);
+      font-family: var(--ff);
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 5px;
@@ -235,61 +192,43 @@
       opacity: 0;
     }
     .hero-title {
-      font-family: var(--ff-display);
-      font-size: clamp(52px, 8.5vw, 118px);
+      font-family: var(--ff);
+      font-size: clamp(48px, 8vw, 112px);
       font-weight: 900;
       line-height: .92;
       letter-spacing: -2px;
       text-transform: uppercase;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
-    .hero-title-line {
-      display: block;
-      overflow: hidden;
-    }
-    .hero-title-inner {
-      display: block;
-      opacity: 0;
-      transform: translateY(110%);
-    }
+    .hero-title-line { display: block; overflow: hidden; }
+    .hero-title-inner { display: block; opacity: 0; transform: translateY(110%); }
     .hero-sub {
+      font-family: var(--ff);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+      opacity: 0;
+    }
+    .hero-desc {
       font-family: var(--ff-body);
       font-size: 15px;
       font-weight: 300;
       line-height: 1.85;
       color: var(--muted);
-      max-width: 480px;
+      max-width: 460px;
       margin-bottom: 44px;
       opacity: 0;
     }
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      opacity: 0;
-    }
-    /* Limit entire hero text block to left ~55% */
-    .hero-text-wrap {
-      max-width: 55%;
-    }
-    @media (max-width: 768px) {
-      .hero-text-wrap { max-width: 100%; }
-    }
+    .hero-actions { display: flex; align-items: center; gap: 20px; opacity: 0; flex-wrap: wrap; }
 
-    /* ─── TICKER ──────────────────────────────────── */
-    .ticker {
-      background: var(--gold);
-      overflow: hidden;
-      padding: 14px 0;
-      border-top: 1px solid #8B6A14;
-    }
-    .ticker-track {
-      display: flex;
-      white-space: nowrap;
-      will-change: transform;
-    }
+    /* ─── TICKER ─────────────────────────────── */
+    .ticker { background: var(--gold); overflow: hidden; padding: 14px 0; border-top: 1px solid #8B6A14; }
+    .ticker-track { display: flex; white-space: nowrap; will-change: transform; }
     .ticker-item {
-      font-family: var(--ff-display);
+      font-family: var(--ff);
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 3.5px;
@@ -298,28 +237,283 @@
       padding-right: 56px;
       flex-shrink: 0;
     }
-    .ticker-item .sep { margin: 0 16px; opacity: .35; }
+    .ticker-item .sep { margin: 0 16px; opacity: .3; }
 
-    /* ─── SECTION: CONÓCENOS ─────────────────────── */
-    #conocenos {
+    /* ─── SECTION: MANIFIESTO ────────────────── */
+    #manifiesto {
       padding: 140px 0;
     }
-    .conocenos-grid {
+    .manifiesto-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 100px;
       align-items: center;
     }
-    .conocenos-left h2 {
-      font-family: var(--ff-display);
-      font-size: clamp(36px, 5vw, 64px);
+    .manifiesto-left h2 {
+      font-family: var(--ff);
+      font-size: clamp(32px, 4.5vw, 60px);
       font-weight: 900;
       text-transform: uppercase;
-      line-height: .95;
-      letter-spacing: -1px;
+      letter-spacing: -1.5px;
+      line-height: .93;
       margin-bottom: 36px;
     }
-    .conocenos-left p {
+    .manifiesto-left p {
+      font-family: var(--ff-body);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .manifiesto-left .btn { margin-top: 16px; }
+    .manifiesto-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .manifesto-item {
+      padding: 36px 0;
+      border-bottom: 1px solid var(--gold-line);
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .manifesto-item:first-child { border-top: 1px solid var(--gold-line); }
+    .manifesto-icon {
+      width: 32px;
+      height: 32px;
+      margin-top: 2px;
+    }
+    .manifesto-icon svg { width: 100%; height: 100%; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .manifesto-item h3 {
+      font-family: var(--ff);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .manifesto-item p {
+      font-family: var(--ff-body);
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* ─── SECTION: LONGEVITY HOUR ────────────── */
+    #longevity {
+      padding: 0 0 140px;
+      background: var(--black);
+    }
+    .longevity-hero {
+      background: var(--black-2);
+      border-top: 1px solid var(--gold-line);
+      border-bottom: 1px solid var(--gold-line);
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .longevity-bg-text {
+      position: absolute;
+      font-family: var(--ff);
+      font-size: clamp(100px, 18vw, 220px);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: rgba(201,168,76,.035);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      pointer-events: none;
+      white-space: nowrap;
+      letter-spacing: -4px;
+    }
+    .longevity-hero-inner { position: relative; }
+    .longevity-hero h2 {
+      font-family: var(--ff);
+      font-size: clamp(36px, 6vw, 88px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      line-height: .92;
+      margin-bottom: 24px;
+    }
+    .longevity-hero p {
+      font-family: var(--ff-body);
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    /* Stats row */
+    .longevity-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 2px;
+    }
+    .lstat {
+      background: var(--black-2);
+      border: 1px solid var(--gold-line);
+      padding: 64px 40px;
+      text-align: center;
+      position: relative;
+    }
+    .lstat::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .lstat-num {
+      font-family: var(--ff);
+      font-size: clamp(44px, 6vw, 80px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -2px;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .lstat-label {
+      font-family: var(--ff);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .lstat-desc {
+      font-family: var(--ff-body);
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--muted2);
+    }
+
+    /* ─── SECTION: MÉTODO ────────────────────── */
+    #metodo {
+      padding: 140px 0;
+    }
+    .metodo-header {
+      margin-bottom: 80px;
+    }
+    .metodo-header h2 {
+      font-family: var(--ff);
+      font-size: clamp(36px, 5.5vw, 80px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      line-height: .9;
+      max-width: 800px;
+      margin-bottom: 24px;
+    }
+    .metodo-header p {
+      font-family: var(--ff-body);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 520px;
+    }
+    .metodo-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2px;
+    }
+    .metodo-card {
+      background: var(--black-2);
+      border: 1px solid var(--gold-line);
+      padding: 44px 32px;
+      transition: border-color .35s, transform .35s;
+      position: relative;
+    }
+    .metodo-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity .35s;
+    }
+    .metodo-card:hover { border-color: rgba(201,168,76,.5); transform: translateY(-4px); }
+    .metodo-card:hover::before { opacity: 1; }
+    .metodo-card-n {
+      font-family: var(--ff);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .metodo-card h3 {
+      font-family: var(--ff);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .metodo-card p {
+      font-family: var(--ff-body);
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* ─── SECTION: SPLIT IMAGE ───────────────── */
+    .split-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 600px;
+    }
+    .split-img {
+      position: relative;
+      overflow: hidden;
+    }
+    .split-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(10%) contrast(1.05);
+      transition: transform .8s ease;
+    }
+    .split-img:hover img { transform: scale(1.03); }
+    .split-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(8,8,8,.4), transparent);
+    }
+    .split-content {
+      background: var(--black-2);
+      padding: 80px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid var(--gold-line);
+    }
+    .split-content h2 {
+      font-family: var(--ff);
+      font-size: clamp(28px, 3.5vw, 52px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      line-height: .95;
+      margin-bottom: 28px;
+    }
+    .split-content p {
       font-family: var(--ff-body);
       font-size: 15px;
       font-weight: 300;
@@ -327,74 +521,53 @@
       color: var(--muted);
       margin-bottom: 16px;
     }
-    .conocenos-left .gold-bar {
-      width: 48px;
-      height: 2px;
-      background: var(--gold);
-      margin-bottom: 32px;
+    .split-content .btn { margin-top: 20px; }
+    .split-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
     }
-    .conocenos-left h3 {
-      font-family: var(--ff-display);
-      font-size: clamp(18px, 2.2vw, 26px);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: -0.5px;
-      line-height: 1.15;
-      margin-bottom: 20px;
+    .split-list li {
+      font-family: var(--ff-body);
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
     }
-    /* Team image right */
-    .conocenos-img {
-      position: relative;
-      overflow: hidden;
-    }
-    .conocenos-img img {
-      width: 100%;
-      height: 520px;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      filter: grayscale(15%) contrast(1.05);
-    }
-    .conocenos-img::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border: 1px solid var(--gold-line);
-      pointer-events: none;
-    }
-    .conocenos-img-caption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 28px 32px;
-      background: linear-gradient(to top, rgba(8,8,8,.9) 0%, transparent 100%);
-    }
-    .conocenos-img-caption p {
-      font-family: var(--ff-display);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+    .split-list li::before {
+      content: '—';
       color: var(--gold);
+      flex-shrink: 0;
+      font-family: var(--ff);
+      font-weight: 700;
     }
 
-    /* ─── SECTION: TREATMENTS ────────────────────── */
-    #tratamientos {
-      padding: 0 0 140px;
+    /* ─── SECTION: RESULTADOS ────────────────── */
+    #resultados {
+      padding: 140px 0;
+      background: var(--black-2);
+      border-top: 1px solid var(--gold-line);
+      border-bottom: 1px solid var(--gold-line);
     }
-    .treats-header {
+    .resultados-header {
       text-align: center;
-      margin-bottom: 72px;
+      margin-bottom: 80px;
     }
-    .treats-header h2 {
-      font-family: var(--ff-display);
-      font-size: clamp(36px, 5vw, 68px);
+    .resultados-header h2 {
+      font-family: var(--ff);
+      font-size: clamp(36px, 5vw, 72px);
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -1.5px;
       line-height: .92;
       margin-bottom: 20px;
     }
-    .treats-header p {
+    .resultados-header p {
       font-family: var(--ff-body);
       font-size: 15px;
       font-weight: 300;
@@ -403,48 +576,36 @@
       max-width: 540px;
       margin: 0 auto;
     }
-    .treats-grid {
+    .resultados-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2px;
     }
-    .treat-card {
-      background: var(--black-2);
-      padding: 52px 44px;
+    .res-card {
+      background: var(--black-3);
       border: 1px solid var(--gold-line);
-      position: relative;
-      overflow: hidden;
-      transition: border-color .4s, transform .4s;
+      padding: 52px 44px;
+      transition: border-color .35s;
     }
-    .treat-card::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      opacity: 0;
-      transition: opacity .4s;
-    }
-    .treat-card:hover { border-color: rgba(201,168,76,.4); transform: translateY(-3px); }
-    .treat-card:hover::after { opacity: 1; }
-    .treat-num {
-      font-family: var(--ff-display);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--gold);
-      margin-bottom: 24px;
-    }
-    .treat-card h3 {
-      font-family: var(--ff-display);
-      font-size: 19px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: -.3px;
-      line-height: 1.15;
+    .res-card:hover { border-color: rgba(201,168,76,.45); }
+    .res-num {
+      font-family: var(--ff);
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1;
+      color: rgba(201,168,76,.1);
+      letter-spacing: -2px;
       margin-bottom: 16px;
     }
-    .treat-card p {
+    .res-card h3 {
+      font-family: var(--ff);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .res-card p {
       font-family: var(--ff-body);
       font-size: 13px;
       font-weight: 300;
@@ -452,316 +613,84 @@
       color: var(--muted);
     }
 
-    /* ─── SECTION: MANIFESTO MUSCULAR ───────────── */
-    #musculo {
-      padding: 120px 0;
-      background: var(--black-2);
-      border-top: 1px solid var(--gold-line);
-      border-bottom: 1px solid var(--gold-line);
-      overflow: hidden;
-      position: relative;
-    }
-    .musculo-bg {
-      position: absolute;
-      font-family: var(--ff-display);
-      font-size: clamp(100px, 18vw, 220px);
-      font-weight: 900;
-      text-transform: uppercase;
-      color: rgba(201,168,76,.035);
-      white-space: nowrap;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      letter-spacing: -4px;
-    }
-    .musculo-inner {
-      position: relative;
-      max-width: 860px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .musculo-inner h2 {
-      font-family: var(--ff-display);
-      font-size: clamp(28px, 4vw, 52px);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -1px;
-      line-height: 1.05;
-      margin-bottom: 36px;
-    }
-    .musculo-inner p {
-      font-family: var(--ff-body);
-      font-size: 16px;
-      font-weight: 300;
-      line-height: 1.9;
-      color: var(--muted);
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    /* ─── SECTION: MODELO FRANQUICIA ────────────── */
-    #modelo {
+    /* ─── SECTION: FACIAL ────────────────────── */
+    #facial {
       padding: 140px 0;
     }
-    .modelo-layout {
+    .facial-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: start;
+      gap: 80px;
+      align-items: center;
     }
-    .modelo-left h2 {
-      font-family: var(--ff-display);
-      font-size: clamp(36px, 5vw, 64px);
+    .facial-left h2 {
+      font-family: var(--ff);
+      font-size: clamp(32px, 4.5vw, 60px);
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -1.5px;
       line-height: .93;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
-    .modelo-left p {
+    .facial-left p {
       font-family: var(--ff-body);
       font-size: 15px;
       font-weight: 300;
       line-height: 1.9;
       color: var(--muted);
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
-    .modelo-left .btn { margin-top: 16px; }
-    .modelo-pillars {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+    .facial-left blockquote {
+      border-left: 2px solid var(--gold);
+      padding-left: 24px;
+      margin: 32px 0;
     }
-    .pillar {
-      padding: 36px 0;
-      border-bottom: 1px solid var(--gold-line);
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 24px;
-      align-items: start;
-    }
-    .pillar:first-child { border-top: 1px solid var(--gold-line); }
-    .pillar-n {
-      font-family: var(--ff-display);
-      font-size: 11px;
+    .facial-left blockquote p {
+      font-family: var(--ff);
+      font-size: 15px;
       font-weight: 700;
-      letter-spacing: 2px;
-      color: var(--gold);
-      padding-top: 3px;
+      letter-spacing: .5px;
+      color: var(--white);
+      margin-bottom: 0;
     }
-    .pillar h3 {
-      font-family: var(--ff-display);
-      font-size: 13px;
+    .facial-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .facial-item {
+      background: var(--black-2);
+      border: 1px solid var(--gold-line);
+      padding: 36px 28px;
+      transition: border-color .35s;
+    }
+    .facial-item:hover { border-color: rgba(201,168,76,.45); }
+    .facial-item-n {
+      font-family: var(--ff);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .facial-item h3 {
+      font-family: var(--ff);
+      font-size: 11px;
       font-weight: 800;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       margin-bottom: 10px;
       line-height: 1.4;
     }
-    .pillar p {
+    .facial-item p {
       font-family: var(--ff-body);
-      font-size: 13px;
-      font-weight: 300;
-      line-height: 1.8;
-      color: var(--muted);
-    }
-
-    /* ─── SECTION: MODELO FINANCIERO ────────────── */
-    #financiero {
-      padding: 0 0 140px;
-    }
-    .fin-header {
-      text-align: center;
-      margin-bottom: 80px;
-    }
-    .fin-header h2 {
-      font-family: var(--ff-display);
-      font-size: clamp(36px, 5vw, 68px);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -1.5px;
-      line-height: .92;
-      margin-bottom: 20px;
-    }
-    .fin-header p {
-      font-family: var(--ff-body);
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.85;
-      color: var(--muted);
-      max-width: 520px;
-      margin: 0 auto;
-    }
-
-    /* Key numbers */
-    .fin-numbers {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      margin-bottom: 2px;
-    }
-    .fin-num-card {
-      background: var(--black-2);
-      border: 1px solid var(--gold-line);
-      padding: 52px 36px;
-      text-align: center;
-      position: relative;
-    }
-    .fin-num-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-    .fin-big {
-      font-family: var(--ff-display);
-      font-size: clamp(36px, 5vw, 60px);
-      font-weight: 900;
-      line-height: 1;
-      margin-bottom: 10px;
-      display: block;
-    }
-    .fin-label {
-      font-family: var(--ff-display);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* Detail rows */
-    .fin-details {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-    }
-    .fin-row {
-      background: var(--black-3);
-      border: 1px solid var(--gold-line);
-      padding: 36px 44px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 24px;
-    }
-    .fin-row-title {
-      font-family: var(--ff-display);
       font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .fin-row-desc {
-      font-family: var(--ff-body);
-      font-size: 13px;
       font-weight: 300;
-      line-height: 1.7;
-      color: var(--muted);
-    }
-    .fin-row-value {
-      font-family: var(--ff-display);
-      font-size: 20px;
-      font-weight: 900;
-      color: var(--gold);
-      white-space: nowrap;
-      text-align: right;
-    }
-
-    /* ─── SECTION: STATS ──────────────────────────── */
-    #stats {
-      background: var(--black-2);
-      border-top: 1px solid var(--gold-line);
-      border-bottom: 1px solid var(--gold-line);
-    }
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-    .stat {
-      padding: 80px 40px;
-      text-align: center;
-      border-right: 1px solid var(--gold-line);
-    }
-    .stat:last-child { border-right: none; }
-    .stat-n {
-      font-family: var(--ff-display);
-      font-size: clamp(44px, 6vw, 80px);
-      font-weight: 900;
-      line-height: 1;
-      letter-spacing: -2px;
-      display: block;
-      margin-bottom: 10px;
-    }
-    .stat-lbl {
-      font-family: var(--ff-display);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+      line-height: 1.75;
       color: var(--muted);
     }
 
-    /* ─── SECTION: POR QUÉ ───────────────────────── */
-    #porque {
-      padding: 140px 0;
-    }
-    .porque-header {
-      margin-bottom: 80px;
-    }
-    .porque-header h2 {
-      font-family: var(--ff-display);
-      font-size: clamp(36px, 5.5vw, 80px);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -2px;
-      line-height: .9;
-      max-width: 800px;
-    }
-    .porque-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-    .porque-card {
-      background: var(--black-2);
-      border: 1px solid var(--gold-line);
-      padding: 52px 44px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color .35s;
-    }
-    .porque-card:hover { border-color: rgba(201,168,76,.5); }
-    .pcard-n {
-      font-family: var(--ff-display);
-      font-size: 64px;
-      font-weight: 900;
-      line-height: 1;
-      color: rgba(201,168,76,.1);
-      margin-bottom: 16px;
-      letter-spacing: -2px;
-    }
-    .porque-card h3 {
-      font-family: var(--ff-display);
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      line-height: 1.35;
-    }
-    .porque-card p {
-      font-family: var(--ff-body);
-      font-size: 13px;
-      font-weight: 300;
-      line-height: 1.85;
-      color: var(--muted);
-    }
-
-    /* ─── SECTION: QUOTE ──────────────────────────── */
+    /* ─── SECTION: QUOTE ─────────────────────── */
     #quote {
       padding: 140px 0;
       background: var(--black-2);
@@ -771,9 +700,9 @@
       position: relative;
       overflow: hidden;
     }
-    .quote-bg {
+    .quote-bg-text {
       position: absolute;
-      font-family: var(--ff-display);
+      font-family: var(--ff);
       font-size: clamp(120px, 22vw, 280px);
       font-weight: 900;
       text-transform: uppercase;
@@ -786,17 +715,26 @@
     }
     .quote-text {
       position: relative;
-      font-family: var(--ff-display);
-      font-size: clamp(22px, 3.5vw, 46px);
-      font-weight: 800;
+      font-family: var(--ff);
+      font-size: clamp(20px, 3.2vw, 42px);
+      font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -1px;
       line-height: 1.1;
       max-width: 900px;
-      margin: 0 auto 28px;
+      margin: 0 auto 24px;
+    }
+    .quote-sub {
+      font-family: var(--ff-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
     }
     .quote-source {
-      font-family: var(--ff-display);
+      font-family: var(--ff);
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 4px;
@@ -804,128 +742,189 @@
       color: var(--gold);
     }
 
-    /* ─── SECTION: CONTACTO ──────────────────────── */
-    #contacto {
+    /* ─── SECTION: PLANES / PRECIOS ──────────── */
+    #planes {
       padding: 140px 0;
     }
-    .contacto-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 100px;
-      align-items: start;
+    .planes-header {
+      text-align: center;
+      margin-bottom: 80px;
     }
-    .contacto-left h2 {
-      font-family: var(--ff-display);
-      font-size: clamp(36px, 4.5vw, 64px);
+    .planes-header h2 {
+      font-family: var(--ff);
+      font-size: clamp(36px, 5vw, 72px);
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -1.5px;
-      line-height: .93;
-      margin-bottom: 28px;
+      line-height: .92;
+      margin-bottom: 20px;
     }
-    .contacto-left p {
+    .planes-header p {
       font-family: var(--ff-body);
       font-size: 15px;
       font-weight: 300;
-      line-height: 1.9;
+      line-height: 1.85;
       color: var(--muted);
-      margin-bottom: 48px;
+      max-width: 520px;
+      margin: 0 auto;
     }
-    .cinfo {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    .planes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
     }
-    .cinfo-row {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
+    .plan-card {
+      background: var(--black-2);
+      border: 1px solid var(--gold-line);
+      padding: 56px 48px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .4s;
     }
-    .cinfo-lbl {
-      font-family: var(--ff-display);
+    .plan-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity .4s;
+    }
+    .plan-card:hover { border-color: rgba(201,168,76,.5); }
+    .plan-card:hover::before { opacity: 1; }
+    .plan-card--featured {
+      background: linear-gradient(160deg, #1A1505 0%, var(--black-2) 60%);
+      border-color: rgba(201,168,76,.4);
+    }
+    .plan-card--featured::before { opacity: .7; }
+    .plan-badge {
+      font-family: var(--ff);
       font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gold);
+      padding: 5px 14px;
+      display: inline-block;
+      margin-bottom: 32px;
+    }
+    .plan-name {
+      font-family: var(--ff);
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 2.5px;
+      letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gold);
-      min-width: 72px;
-      padding-top: 1px;
+      margin-bottom: 12px;
     }
-    .cinfo-val {
+    .plan-card h3 {
+      font-family: var(--ff);
+      font-size: clamp(22px, 2.5vw, 32px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .plan-sessions {
+      font-family: var(--ff);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .plan-price {
+      font-family: var(--ff);
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 6px;
+    }
+    .plan-price-period {
+      font-family: var(--ff);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+    .plan-divider { width: 100%; height: 1px; background: var(--gold-line); margin-bottom: 28px; }
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .plan-features li {
       font-family: var(--ff-body);
       font-size: 13px;
       font-weight: 300;
       color: var(--muted);
-      line-height: 1.6;
-    }
-    /* Form */
-    .cform {
       display: flex;
-      flex-direction: column;
-      gap: 20px;
+      align-items: flex-start;
+      gap: 12px;
+      line-height: 1.5;
     }
-    .cform-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .fgroup {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-    .fgroup label {
-      font-family: var(--ff-display);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .fgroup input,
-    .fgroup select,
-    .fgroup textarea {
-      background: var(--black-2);
-      border: 1px solid var(--gold-line);
-      color: var(--white);
+    .plan-features li::before { content: '—'; color: var(--gold); font-family: var(--ff); font-weight: 700; flex-shrink: 0; }
+    .plan-note {
       font-family: var(--ff-body);
-      font-size: 14px;
+      font-size: 11px;
       font-weight: 300;
-      padding: 15px 18px;
-      outline: none;
-      appearance: none;
-      -webkit-appearance: none;
-      transition: border-color .3s;
-    }
-    .fgroup input::placeholder,
-    .fgroup textarea::placeholder { color: var(--muted2); }
-    .fgroup input:focus,
-    .fgroup select:focus,
-    .fgroup textarea:focus { border-color: var(--gold); }
-    .fgroup textarea { resize: vertical; min-height: 130px; }
-    .fgroup select option { background: var(--black-2); }
-    .btn-submit {
-      font-family: var(--ff-display);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 3.5px;
-      text-transform: uppercase;
-      padding: 19px 0;
-      background: var(--gold);
-      color: var(--black);
-      border: 1px solid var(--gold);
-      cursor: pointer;
-      width: 100%;
-      margin-top: 4px;
-      transition: background .3s, color .3s, transform .25s;
-    }
-    .btn-submit:hover {
-      background: transparent;
-      color: var(--gold);
-      transform: translateY(-2px);
+      color: var(--muted2);
+      font-style: italic;
+      margin-top: 12px;
     }
 
-    /* ─── FOOTER ──────────────────────────────────── */
+    /* ─── SECTION: CTA FRANQUICIA ────────────── */
+    #franquicia-cta {
+      padding: 140px 0;
+      background: var(--black-2);
+      border-top: 1px solid var(--gold-line);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .fcta-bg {
+      position: absolute;
+      font-family: var(--ff);
+      font-size: clamp(100px, 17vw, 200px);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: rgba(201,168,76,.03);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      pointer-events: none;
+      white-space: nowrap;
+      letter-spacing: -4px;
+    }
+    .fcta-inner { position: relative; max-width: 800px; margin: 0 auto; }
+    .fcta-inner h2 {
+      font-family: var(--ff);
+      font-size: clamp(32px, 4.5vw, 64px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -1.5px;
+      line-height: .93;
+      margin-bottom: 24px;
+    }
+    .fcta-inner p {
+      font-family: var(--ff-body);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto 44px;
+    }
+    .fcta-actions { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+
+    /* ─── FOOTER ─────────────────────────────── */
     footer {
       background: var(--black-2);
       border-top: 1px solid var(--gold-line);
@@ -937,11 +936,7 @@
       gap: 80px;
       margin-bottom: 60px;
     }
-    .footer-brand img {
-      height: 32px;
-      filter: invert(1);
-      margin-bottom: 24px;
-    }
+    .footer-brand img { height: 32px; filter: invert(1); margin-bottom: 24px; }
     .footer-brand p {
       font-family: var(--ff-body);
       font-size: 13px;
@@ -951,7 +946,7 @@
       max-width: 300px;
     }
     .footer-col h4 {
-      font-family: var(--ff-display);
+      font-family: var(--ff);
       font-size: 9px;
       font-weight: 800;
       letter-spacing: 3px;
@@ -975,16 +970,10 @@
       padding-top: 36px;
       border-top: 1px solid var(--gold-line);
     }
-    .footer-copy {
-      font-family: var(--ff-display);
-      font-size: 9px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--muted2);
-    }
+    .footer-copy { font-family: var(--ff); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted2); }
     .footer-social { display: flex; gap: 24px; }
     .footer-social a {
-      font-family: var(--ff-display);
+      font-family: var(--ff);
       font-size: 9px;
       font-weight: 700;
       letter-spacing: 2.5px;
@@ -994,242 +983,139 @@
     }
     .footer-social a:hover { color: var(--gold); }
 
-    /* ─── RESPONSIVE ──────────────────────────────── */
+    /* ─── RESPONSIVE ─────────────────────────── */
     @media (max-width: 1024px) {
       .container { padding: 0 32px; }
-      .conocenos-grid, .modelo-layout, .contacto-layout { gap: 60px; }
-      .fin-numbers { grid-template-columns: repeat(2, 1fr); }
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
-      .stats-row .stat:nth-child(2) { border-right: none; }
-      .porque-cards { grid-template-columns: 1fr 1fr; }
+      #nav .container, #hero .container { padding: 0 32px; }
+      .manifiesto-layout, .facial-layout { gap: 60px; }
+      .metodo-grid { grid-template-columns: repeat(3, 1fr); }
+      .longevity-stats { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; }
       .footer-brand { grid-column: 1/-1; }
     }
     @media (max-width: 768px) {
       :root { --nav-h: 68px; }
       .container { padding: 0 20px; }
+      #nav .container, #hero .container { padding: 0 20px; }
       .nav-links { display: none; }
-      .conocenos-grid, .modelo-layout, .contacto-layout { grid-template-columns: 1fr; }
-      .treats-grid, .porque-cards { grid-template-columns: 1fr; }
-      .fin-numbers { grid-template-columns: 1fr 1fr; }
-      .fin-details { grid-template-columns: 1fr; }
-      .fin-row { grid-template-columns: 1fr; gap: 8px; }
-      .fin-row-value { text-align: left; }
-      .stats-row { grid-template-columns: 1fr 1fr; }
-      .cform-row { grid-template-columns: 1fr; }
+      .hero-text-wrap { max-width: 100%; }
+      .manifiesto-layout, .facial-layout { grid-template-columns: 1fr; }
+      .split-section { grid-template-columns: 1fr; }
+      .split-img { height: 320px; }
+      .split-content { padding: 52px 32px; }
+      .resultados-grid, .planes-grid { grid-template-columns: 1fr; }
+      .metodo-grid { grid-template-columns: 1fr 1fr; }
+      .facial-right { grid-template-columns: 1fr; }
+      .longevity-stats { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; gap: 40px; }
       .footer-bottom { flex-direction: column; gap: 16px; }
-      #tratamientos, #conocenos { padding: 80px 0; }
-      #modelo, #financiero, #porque, #contacto { padding: 80px 0; }
+      #manifiesto, #metodo, #facial, #planes, #franquicia-cta { padding: 80px 0; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══ NAV ═══════════════════════════════════════════ -->
+<!-- ═══ NAV ════════════════════════════════════════ -->
 <nav id="nav">
   <div class="container">
     <div class="nav-inner">
-      <a href="#hero">
+      <a href="index.html">
         <img src="Logo the wonder clinic.png" alt="The Wonder Clinic" class="nav-logo" />
       </a>
       <ul class="nav-links">
-        <li><a href="#conocenos">Concepto</a></li>
-        <li><a href="#modelo">Franquicia</a></li>
-        <li><a href="#financiero">Financiero</a></li>
-        <li><a href="#porque">Por qué</a></li>
-        <li><a href="#contacto" class="nav-cta">Solicitar Info</a></li>
+        <li><a href="#longevity">Longevity Hour®</a></li>
+        <li><a href="#metodo">El Método</a></li>
+        <li><a href="#resultados">Resultados</a></li>
+        <li><a href="#planes">Planes</a></li>
+        <li><a href="franquicia.html" class="nav-cta">Franquicias</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- ═══ HERO ═══════════════════════════════════════════ -->
+<!-- ═══ HERO ════════════════════════════════════════ -->
 <section id="hero">
-  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="container">
       <div class="hero-text-wrap">
-        <p class="hero-tag" id="heroTag">Muscle Sculpting &amp; Wellness — Franquicias</p>
+        <p class="hero-tag" id="heroTag">Creadores del Método — Longevity Hour®</p>
         <h1 class="hero-title">
-          <span class="hero-title-line"><span class="hero-title-inner">Aquí empieza</span></span>
-          <span class="hero-title-line"><span class="hero-title-inner gold-text">una nueva forma</span></span>
-          <span class="hero-title-line"><span class="hero-title-inner">de negocio.</span></span>
+          <span class="hero-title-line"><span class="hero-title-inner">Reprograma</span></span>
+          <span class="hero-title-line"><span class="hero-title-inner gold-text">tu cuerpo</span></span>
+          <span class="hero-title-line"><span class="hero-title-inner">en 60 minutos.</span></span>
         </h1>
-        <p class="hero-sub" id="heroSub">
-          Tecnología, resultados y sensaciones que marcan la diferencia. Conviértete en franquiciado de The Wonder Clinic y posicionate en una categoría que el mercado aún no tiene.
+        <p class="hero-sub" id="heroSub">Activa músculo. Reduce grasa. Restaura el equilibrio.</p>
+        <p class="hero-desc" id="heroDesc">
+          Tratamientos de biohacking neuromuscular para la optimización total del cuerpo. Protocolos integrados de rostro y cuerpo para mejorar cómo te ves, cómo funcionas y cómo envejeces.
         </p>
         <div class="hero-actions" id="heroActions">
-          <a href="#contacto" class="btn btn-gold">Solicitar información</a>
-          <a href="#modelo" class="btn btn-outline">Ver el modelo</a>
+          <a href="#planes" class="btn btn-gold">Comienza tu transformación</a>
+          <a href="franquicia.html" class="btn btn-outline">Quiero abrir mi centro</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ TICKER ══════════════════════════════════════════ -->
+<!-- ═══ TICKER ══════════════════════════════════════ -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track" id="ticker">
-    <span class="ticker-item">The Wonder Clinic<span class="sep">✦</span>Muscle Sculpting<span class="sep">✦</span>Franquicia Premium<span class="sep">✦</span>Tecnología Avanzada<span class="sep">✦</span>Resultados Reales<span class="sep">✦</span>Ingresos Recurrentes<span class="sep">✦</span></span>
-    <span class="ticker-item">The Wonder Clinic<span class="sep">✦</span>Muscle Sculpting<span class="sep">✦</span>Franquicia Premium<span class="sep">✦</span>Tecnología Avanzada<span class="sep">✦</span>Resultados Reales<span class="sep">✦</span>Ingresos Recurrentes<span class="sep">✦</span></span>
-    <span class="ticker-item">The Wonder Clinic<span class="sep">✦</span>Muscle Sculpting<span class="sep">✦</span>Franquicia Premium<span class="sep">✦</span>Tecnología Avanzada<span class="sep">✦</span>Resultados Reales<span class="sep">✦</span>Ingresos Recurrentes<span class="sep">✦</span></span>
+    <span class="ticker-item">Longevity Hour®<span class="sep">✦</span>Activación Neuromuscular<span class="sep">✦</span>Optimización Corporal<span class="sep">✦</span>Resultados desde la Primera Sesión<span class="sep">✦</span>Tecnología Avanzada<span class="sep">✦</span>Solo 1 Hora a la Semana<span class="sep">✦</span></span>
+    <span class="ticker-item">Longevity Hour®<span class="sep">✦</span>Activación Neuromuscular<span class="sep">✦</span>Optimización Corporal<span class="sep">✦</span>Resultados desde la Primera Sesión<span class="sep">✦</span>Tecnología Avanzada<span class="sep">✦</span>Solo 1 Hora a la Semana<span class="sep">✦</span></span>
+    <span class="ticker-item">Longevity Hour®<span class="sep">✦</span>Activación Neuromuscular<span class="sep">✦</span>Optimización Corporal<span class="sep">✦</span>Resultados desde la Primera Sesión<span class="sep">✦</span>Tecnología Avanzada<span class="sep">✦</span>Solo 1 Hora a la Semana<span class="sep">✦</span></span>
   </div>
 </div>
 
-<!-- ═══ CONÓCENOS ══════════════════════════════════════ -->
-<section id="conocenos">
+<!-- ═══ MANIFIESTO ══════════════════════════════════ -->
+<section id="manifiesto">
   <div class="container">
-    <div class="conocenos-grid">
+    <div class="manifiesto-layout">
 
-      <div class="conocenos-left">
-        <p class="eyebrow reveal">Conócenos</p>
+      <div class="manifiesto-left">
+        <p class="eyebrow reveal">El tiempo es tu único activo real</p>
         <h2 class="reveal">
-          Somos el<br/>
-          equipo<br/>
-          <span class="gold-text">Wonder.</span>
-        </h2>
-        <div class="gold-bar reveal"></div>
-        <h3 class="reveal">Innovamos sin descanso desde Madrid para clínicas líderes del mundo.</h3>
-        <p class="reveal">
-          Ingenieros, médicos y visionarios unidos para redefinir la estética. Diseñamos tecnología avanzada que transforma músculo, grasa y piel con precisión científica.
-        </p>
-        <p class="reveal">
-          Creamos resultados reales, medibles y repetibles, impulsando una nueva era donde la belleza nace del músculo y evoluciona cada día con nosotros y contigo siempre.
-        </p>
-      </div>
-
-      <div class="conocenos-img reveal">
-        <img src="bg team.png" alt="Equipo Wonder Clinic" />
-        <div class="conocenos-img-caption">
-          <p>Equipo Wonder — Ingenieros, médicos &amp; visionarios</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══ TRATAMIENTOS / BENEFICIOS ══════════════════════ -->
-<section id="tratamientos">
-  <div class="container">
-    <div class="treats-header">
-      <p class="eyebrow reveal" style="justify-content:center;">Lo que ofreces en tu clínica</p>
-      <h2 class="reveal">Superpoderes<br/><span class="gold-text">para tus músculos.</span></h2>
-      <p class="reveal">Descubre lo que el cuerpo es capaz de hacer cuando activas todo su potencial. No es un entrenamiento convencional, es una experiencia que despierta capacidades que nunca habías sentido antes.</p>
-    </div>
-
-    <div class="treats-grid">
-
-      <div class="treat-card reveal">
-        <p class="treat-num">01</p>
-        <h3>Entrena sin entrenar</h3>
-        <p>Nuestra tecnología activa la musculatura de forma inteligente, generando contracciones profundas que normalmente no puedes alcanzar por ti mismo. Cómodo, eficaz y una nueva forma de conseguir resultados reales sin esfuerzo tradicional.</p>
-      </div>
-
-      <div class="treat-card reveal">
-        <p class="treat-num">02</p>
-        <h3>Todo el cuerpo en solo una hora a la semana</h3>
-        <p>Con sesiones diseñadas para trabajar múltiples grupos musculares simultáneamente, puedes transformar tu cuerpo de forma global dedicando solo una hora a la semana. Más eficiencia, más resultados, menos tiempo invertido.</p>
-      </div>
-
-      <div class="treat-card reveal">
-        <p class="treat-num">03</p>
-        <h3>Fuerza, resistencia, equilibrio</h3>
-        <p>No se trata solo de estética. Es rendimiento, estabilidad y control corporal. Aumenta tu fuerza, mejora tu resistencia y recupera el equilibrio muscular que tu cuerpo necesita.</p>
-      </div>
-
-      <div class="treat-card reveal">
-        <p class="treat-num">04</p>
-        <h3>El músculo es la base de la longevidad</h3>
-        <p>Un cuerpo fuerte es un cuerpo que dura más y vive mejor. El desarrollo muscular mejora el metabolismo, protege las articulaciones y reduce procesos inflamatorios. Una inversión directa en salud y calidad de vida.</p>
-      </div>
-
-      <div class="treat-card reveal">
-        <p class="treat-num">05</p>
-        <h3>Más músculo, menos grasa</h3>
-        <p>Al aumentar la masa muscular, el cuerpo se vuelve más eficiente consumiendo energía. Esto favorece la reducción de grasa de forma progresiva y natural, transformando la composición corporal hacia una versión más fuerte y definida.</p>
-      </div>
-
-      <div class="treat-card reveal">
-        <p class="treat-num">06</p>
-        <h3>Resultados desde el primer día</h3>
-        <p>Desde la primera sesión se nota cómo el cuerpo responde. La activación muscular es inmediata y la sensación de trabajo es real. No hay que esperar semanas para entender que funciona. Lo sientes en el momento y lo ves en el espejo.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══ MANIFESTO MUSCULAR ══════════════════════════════ -->
-<section id="musculo">
-  <div class="musculo-bg" aria-hidden="true">MÚSCULO</div>
-  <div class="container">
-    <div class="musculo-inner">
-      <p class="eyebrow reveal" style="justify-content:center;">Nuestra filosofía</p>
-      <h2 class="reveal">
-        El músculo es la base<br/>
-        de la <span class="gold-text">salud</span> y la<br/>
-        <span class="gold-text">longevidad.</span>
-      </h2>
-      <p class="reveal">
-        El músculo es la base real de la salud, la longevidad y el equilibrio del cuerpo. Un sistema muscular activo mejora la movilidad, aumenta la fuerza y protege frente al deterioro. Pero también impacta en la mente: eleva el autocontrol, refuerza la confianza y estabiliza el estado emocional. Desarrollar músculo es construir bienestar físico y mental duradero.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ MODELO FRANQUICIA ════════════════════════════════ -->
-<section id="modelo">
-  <div class="container">
-    <div class="modelo-layout">
-
-      <div class="modelo-left">
-        <p class="eyebrow reveal">Modelo de franquicia</p>
-        <h2 class="reveal">
-          Un modelo que<br/>
-          convierte tecnología<br/>
-          <span class="gold-text">en ingresos.</span>
+          El cuerpo que<br/>
+          tienes es el resultado<br/>
+          de cómo <span class="gold-text">inviertes</span><br/>
+          tu tiempo.
         </h2>
         <p class="reveal">
-          The Wonder Clinic transforma sesiones de 25 minutos en una fuente constante de facturación. Alta rotación, tiempos optimizados y demanda creciente permiten generar ingresos recurrentes desde el inicio, con una estructura operativa simple y altamente eficiente.
+          Durante años, la industria del fitness ha condicionado a las personas a creer que la transformación requiere horas interminables, esfuerzo repetitivo y rutinas insostenibles.
         </p>
         <p class="reveal">
-          No estás comprando un negocio tradicional. Estás entrando en una nueva categoría que une estética, salud y tecnología.
+          No es así. Requiere método. Requiere precisión. En The Wonder Clinic eliminamos la ineficiencia y convertimos el esfuerzo en resultados visibles, medibles y duraderos.
         </p>
-        <a href="#contacto" class="btn btn-gold reveal">Quiero ser franquiciado</a>
+        <a href="#longevity" class="btn btn-gold reveal">Descubre Longevity Hour®</a>
       </div>
 
-      <div class="modelo-pillars">
-        <div class="pillar reveal">
-          <span class="pillar-n">01</span>
+      <div class="manifiesto-right">
+        <div class="manifesto-item reveal">
+          <div class="manifesto-icon">
+            <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"/><path d="M16 10v6l4 3"/></svg>
+          </div>
           <div>
-            <h3>Alta rentabilidad por metro cuadrado</h3>
-            <p>No necesitas grandes espacios ni grandes equipos humanos. Con un local optimizado y pocos recursos, puedes alcanzar una facturación elevada. Diseñado para maximizar cada metro cuadrado y cada hora de trabajo.</p>
+            <h3>Máximo impacto en mínimo tiempo</h3>
+            <p>Longevity Hour® no es solo una sesión. Es una cápsula de alto rendimiento diseñada para entregar el máximo impacto en el menor tiempo posible.</p>
           </div>
         </div>
-        <div class="pillar reveal">
-          <span class="pillar-n">02</span>
+        <div class="manifesto-item reveal">
+          <div class="manifesto-icon">
+            <svg viewBox="0 0 32 32"><path d="M6 26L16 6l10 20"/><path d="M9.5 19h13"/></svg>
+          </div>
           <div>
-            <h3>Demanda creciente, mercado sin saturar</h3>
-            <p>El concepto de músculo como base de la estética es una tendencia global en expansión. Estás entrando en una categoría nueva, con poca competencia real y una fuerte atracción tanto en clientes estéticos como de bienestar y rendimiento.</p>
+            <h3>Método, no promesas</h3>
+            <p>No dependemos de promesas. Dependemos de estructura, repetición y progreso medible. Cada sesión construye sobre la anterior. Cada semana acumula resultados.</p>
           </div>
         </div>
-        <div class="pillar reveal">
-          <span class="pillar-n">03</span>
-          <div>
-            <h3>Ingresos recurrentes y predecibles</h3>
-            <p>Los clientes no vienen una vez, repiten. El modelo está diseñado para generar continuidad mediante planes de sesiones, lo que estabiliza los ingresos y permite una previsión financiera clara desde los primeros meses.</p>
+        <div class="manifesto-item reveal">
+          <div class="manifesto-icon">
+            <svg viewBox="0 0 32 32"><rect x="4" y="4" width="10" height="10" rx="1"/><rect x="18" y="4" width="10" height="10" rx="1"/><rect x="4" y="18" width="10" height="10" rx="1"/><rect x="18" y="18" width="10" height="10" rx="1"/></svg>
           </div>
-        </div>
-        <div class="pillar reveal">
-          <span class="pillar-n">04</span>
           <div>
-            <h3>Operativa simple, escalabilidad real</h3>
-            <p>No necesitas una estructura compleja. Formación clara, protocolos definidos y tecnología automatizada permiten operar con facilidad. Además, el modelo es replicable, facilitando la expansión a múltiples centros.</p>
+            <h3>Precisión reemplaza el esfuerzo</h3>
+            <p>Cada contracción es controlada. Cada estímulo es intencional. Cada minuto está optimizado. El resultado: tonificación acelerada y respuesta metabólica mejorada.</p>
           </div>
         </div>
       </div>
@@ -1240,270 +1126,408 @@
 
 <div class="divider"></div>
 
-<!-- ═══ MODELO FINANCIERO ════════════════════════════════ -->
-<section id="financiero">
-  <div class="container">
-    <div class="fin-header">
-      <p class="eyebrow reveal" style="justify-content:center;">Modelo financiero</p>
-      <h2 class="reveal">Los números<br/><span class="gold-text">hablan solos.</span></h2>
-      <p class="reveal">Inversión optimizada, estructura ligera y ticket medio alto. Un modelo diseñado para que cada metro cuadrado y cada sesión trabajen para ti desde el primer día.</p>
-    </div>
-
-    <!-- Key numbers -->
-    <div class="fin-numbers">
-      <div class="fin-num-card reveal">
-        <span class="fin-big gold-text" data-target="70">0<small style="font-size:.45em">K€</small></span>
-        <span class="fin-label">Inversión inicial</span>
-      </div>
-      <div class="fin-num-card reveal">
-        <span class="fin-big gold-text">30<small style="font-size:.45em">m²</small></span>
-        <span class="fin-label">Espacio mínimo</span>
-      </div>
-      <div class="fin-num-card reveal">
-        <span class="fin-big gold-text">800<small style="font-size:.45em">€</small></span>
-        <span class="fin-label">Ticket medio / cliente</span>
-      </div>
-      <div class="fin-num-card reveal">
-        <span class="fin-big gold-text" data-target="10">0<small style="font-size:.45em">K€</small></span>
-        <span class="fin-label">Facturación mensual</span>
+<!-- ═══ LONGEVITY HOUR ══════════════════════════════ -->
+<section id="longevity">
+  <div class="longevity-hero">
+    <div class="longevity-bg-text" aria-hidden="true">LONGEVITY</div>
+    <div class="container">
+      <div class="longevity-hero-inner">
+        <p class="eyebrow reveal" style="justify-content:center;">El protocolo</p>
+        <h2 class="reveal">
+          Longevity <span class="gold-text">Hour®</span>
+        </h2>
+        <p class="reveal">
+          En una hora a la semana, tu cuerpo recibe un nivel de activación neuromuscular equivalente a múltiples sesiones de entrenamiento tradicional — sin desgaste, sin energía malgastada, sin compromiso.
+        </p>
+        <a href="#planes" class="btn btn-gold reveal">Reserva tu sesión</a>
       </div>
     </div>
-
-    <!-- Detail rows -->
-    <div class="fin-details" style="margin-top:2px;">
-      <div class="fin-row reveal">
-        <div>
-          <p class="fin-row-title">Inversión inicial optimizada</p>
-          <p class="fin-row-desc">Obra civil (~50.000 €), mobiliario (~9.000 €) y proyecto (~9.000 €). Los equipos principales se entregan sin coste, reduciendo significativamente la inversión real de entrada.</p>
-        </div>
-        <span class="fin-row-value gold-text">~70.000 €</span>
-      </div>
-      <div class="fin-row reveal">
-        <div>
-          <p class="fin-row-title">Estructura de personal reducida</p>
-          <p class="fin-row-desc">Solo 1–2 empleados necesarios. Coste aproximado de 2.000 € mensuales por empleado. Modelo eficiente que minimiza costes fijos y simplifica la gestión operativa diaria.</p>
-        </div>
-        <span class="fin-row-value gold-text">1–2 empleados</span>
-      </div>
-      <div class="fin-row reveal">
-        <div>
-          <p class="fin-row-title">Costes operativos bajos</p>
-          <p class="fin-row-desc">Suministros, comunicaciones, limpieza, gestoría, seguros y software. Estructura ligera que mejora márgenes y permite una previsión financiera fiable.</p>
-        </div>
-        <span class="fin-row-value gold-text">~1.350 €/mes</span>
-      </div>
-      <div class="fin-row reveal">
-        <div>
-          <p class="fin-row-title">Consumibles mínimos</p>
-          <p class="fin-row-desc">Coste muy bajo tanto en tratamientos faciales como corporales (8–10 sesiones por tratamiento completo), lo que incrementa directamente la rentabilidad por cliente.</p>
-        </div>
-        <span class="fin-row-value gold-text">~20 €/trat.</span>
-      </div>
-      <div class="fin-row reveal">
-        <div>
-          <p class="fin-row-title">Estacionalidad favorable</p>
-          <p class="fin-row-desc">Alta demanda corporal de enero a julio y facial de septiembre a marzo, permitiendo mantener actividad constante y facturación estable durante todo el año.</p>
-        </div>
-        <span class="fin-row-value gold-text">12 meses</span>
-      </div>
-      <div class="fin-row reveal">
-        <div>
-          <p class="fin-row-title">Espacio y alquiler controlado</p>
-          <p class="fin-row-desc">Solo necesitas desde 30 m², con alquiler recomendado entre 1.500 € y 3.500 € mensuales. Permite abrir en ubicaciones estratégicas sin asumir riesgos excesivos.</p>
-        </div>
-        <span class="fin-row-value gold-text">1.500–3.500 €</span>
-      </div>
-    </div>
-
   </div>
-</section>
 
-<!-- ═══ STATS ═════════════════════════════════════════════ -->
-<section id="stats">
   <div class="container">
-    <div class="stats-row">
-      <div class="stat reveal">
-        <span class="stat-n gold-text" data-target="25">0<small style="font-size:.45em"> min</small></span>
-        <span class="stat-lbl">Duración de sesión</span>
+    <div class="longevity-stats">
+      <div class="lstat reveal">
+        <span class="lstat-num gold-text" data-target="60">0<small style="font-size:.4em"> min</small></span>
+        <span class="lstat-label">Una sola sesión semanal</span>
+        <p class="lstat-desc">Sesiones de 60 minutos que sustituyen días de entrenamiento convencional con precisión tecnológica.</p>
       </div>
-      <div class="stat reveal">
-        <span class="stat-n gold-text" data-target="800">0<small style="font-size:.45em">€</small></span>
-        <span class="stat-lbl">Ticket medio mensual</span>
+      <div class="lstat reveal">
+        <span class="lstat-num gold-text">100<small style="font-size:.4em">%</small></span>
+        <span class="lstat-label">Activación muscular profunda</span>
+        <p class="lstat-desc">Contracciones profundas que no puedes alcanzar por ti mismo. Tecnología que activa lo que el entrenamiento convencional no puede.</p>
       </div>
-      <div class="stat reveal">
-        <span class="stat-n gold-text">1–2</span>
-        <span class="stat-lbl">Empleados necesarios</span>
-      </div>
-      <div class="stat reveal">
-        <span class="stat-n gold-text">24/7</span>
-        <span class="stat-lbl">Soporte franquiciado</span>
+      <div class="lstat reveal">
+        <span class="lstat-num gold-text">1ª</span>
+        <span class="lstat-label">Sesión — resultados inmediatos</span>
+        <p class="lstat-desc">Desde la primera sesión notas la activación. No esperas semanas. Lo sientes en el momento y lo ves progresivamente.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ POR QUÉ ════════════════════════════════════════════ -->
-<section id="porque">
+<!-- ═══ MÉTODO ══════════════════════════════════════ -->
+<section id="metodo">
   <div class="container">
-    <div class="porque-header">
-      <p class="eyebrow reveal">Por qué elegirnos</p>
+    <div class="metodo-header">
+      <p class="eyebrow reveal">Wonder Longevity Method</p>
       <h2 class="reveal">
-        Invierte en el<br/>
-        <span class="gold-text">futuro</span> de<br/>
-        la estética.
+        Tecnología que<br/>
+        <span class="gold-text">redefine</span> el<br/>
+        entrenamiento.
       </h2>
+      <p class="reveal">Esto no es una alternativa al gimnasio. Es una evolución más allá de él. Cada elemento está diseñado para trabajar en conjunto. La precisión reemplaza la intuición.</p>
     </div>
 
-    <div class="porque-cards">
-
-      <div class="porque-card reveal">
-        <p class="pcard-n">01</p>
-        <h3>Mercado sin saturar</h3>
-        <p>El concepto de músculo como base de la estética es una tendencia global en expansión. Con poca competencia real y una fuerte demanda creciente, estás entrando antes de que el mercado madure.</p>
+    <div class="metodo-grid">
+      <div class="metodo-card reveal">
+        <p class="metodo-card-n">01</p>
+        <h3>Estimulación Neuromuscular Profunda</h3>
+        <p>Activación directa de las fibras musculares profundas mediante tecnología avanzada de neuroestimulación controlada.</p>
       </div>
-
-      <div class="porque-card reveal">
-        <p class="pcard-n">02</p>
-        <h3>Tecnología propietaria</h3>
-        <p>Equipos y protocolos exclusivos que garantizan resultados superiores. Los clientes lo sienten desde la primera sesión y repiten. La retención es el motor de los ingresos recurrentes.</p>
+      <div class="metodo-card reveal">
+        <p class="metodo-card-n">02</p>
+        <h3>Activación Metabólica Avanzada</h3>
+        <p>Al aumentar la masa muscular activa, tu metabolismo se vuelve más eficiente. Reducción de grasa progresiva y natural.</p>
       </div>
-
-      <div class="porque-card reveal">
-        <p class="pcard-n">03</p>
-        <h3>Marca premium de alto impacto</h3>
-        <p>The Wonder Clinic está diseñada desde el origen para atraer al cliente de alto valor. El posicionamiento visual y la experiencia de cliente generan deseo y son difícilmente replicables.</p>
+      <div class="metodo-card reveal">
+        <p class="metodo-card-n">03</p>
+        <h3>Máxima Eficiencia Temporal</h3>
+        <p>Una hora a la semana con impacto de días de entrenamiento. No inviertes más tiempo — obtienes más del tiempo que inviertes.</p>
       </div>
-
-      <div class="porque-card reveal">
-        <p class="pcard-n">04</p>
-        <h3>Operativa eficiente y escalable</h3>
-        <p>Sesiones de 25 minutos, rotación alta, personal mínimo. El modelo está diseñado para maximizar cada metro cuadrado. Replicable con baja complejidad operativa.</p>
+      <div class="metodo-card reveal">
+        <p class="metodo-card-n">04</p>
+        <h3>Protocolos Anti-Inflamatorios</h3>
+        <p>Mejora el drenaje linfático, la circulación y el aporte de oxígeno. Reduce la inflamación sistémica y localizada.</p>
       </div>
-
-      <div class="porque-card reveal">
-        <p class="pcard-n">05</p>
-        <h3>Ingresos recurrentes y estables</h3>
-        <p>Los clientes no vienen una sola vez. La primera sesión sorprende, la segunda convence, y a partir de ahí se convierte en parte de su rutina. Esto genera visibilidad financiera real a medio plazo.</p>
+      <div class="metodo-card reveal">
+        <p class="metodo-card-n">05</p>
+        <h3>Optimización Facial Integrada</h3>
+        <p>La verdadera optimización no se detiene en el cuerpo. Protocolos faciales que complementan el trabajo muscular y elevan la apariencia global.</p>
       </div>
-
-      <div class="porque-card reveal">
-        <p class="pcard-n">06</p>
-        <h3>Soporte total desde el día uno</h3>
-        <p>Formación completa, marketing centralizado, gestor dedicado, diseño e interiorismo, software de gestión y acceso a la red de franquiciados. No estás solo en ningún momento.</p>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══ QUOTE ══════════════════════════════════════════════ -->
-<section id="quote">
-  <div class="quote-bg" aria-hidden="true">WONDER</div>
-  <div class="container">
-    <p class="quote-text reveal">
-      "No estás comprando<br/>
-      un negocio tradicional.<br/>
-      Estás entrando en<br/>
-      <span class="gold-text">una nueva categoría."</span>
+<div class="divider"></div>
+
+<!-- ═══ SPLIT: ENTRENA SIN ENTRENAR ════════════════ -->
+<div class="split-section">
+  <div class="split-img">
+    <img src="bg team.png" alt="The Wonder Clinic — Equipo y tecnología" />
+    <div class="split-img-overlay"></div>
+  </div>
+  <div class="split-content">
+    <p class="eyebrow reveal">Entrena sin entrenar</p>
+    <h2 class="reveal">
+      Un cuerpo<br/>
+      tonificado no es<br/>
+      solo <span class="gold-text">estético.</span>
+    </h2>
+    <p class="reveal">
+      Longevity Hour® garantiza que tu tejido muscular no solo sea estimulado, sino optimizado. Porque un cuerpo bien tonificado es funcional, resiliente y eficiente.
     </p>
-    <p class="quote-source reveal">The Wonder Clinic — Franquicias</p>
+    <p class="reveal">El músculo es la base de la longevidad. Define la fuerza, la eficiencia metabólica, la postura, los niveles de energía y cómo envejece tu cuerpo con el tiempo.</p>
+    <ul class="split-list reveal">
+      <li>Sin impacto articular ni sobrecarga</li>
+      <li>Resultados visibles desde la primera sesión</li>
+      <li>Apto para cualquier perfil y condición física</li>
+      <li>Compatible con tu ritmo de vida</li>
+    </ul>
+    <a href="#planes" class="btn btn-gold reveal">Reserva tu primera sesión</a>
+  </div>
+</div>
+
+<!-- ═══ RESULTADOS ══════════════════════════════════ -->
+<section id="resultados">
+  <div class="container">
+    <div class="resultados-header">
+      <p class="eyebrow reveal" style="justify-content:center;">Resultados reales</p>
+      <h2 class="reveal">
+        Más joven<br/>
+        <span class="gold-text">desde dentro.</span>
+      </h2>
+      <p class="reveal">Un cuerpo más joven no se define por la edad, sino por la condición. A través de la activación neuromuscular constante y la estimulación metabólica, Longevity Hour® transforma desde la estructura.</p>
+    </div>
+
+    <div class="resultados-grid">
+      <div class="res-card reveal">
+        <p class="res-num">01</p>
+        <h3>Más tono y definición muscular</h3>
+        <p>Activación profunda que genera contracciones que el entrenamiento convencional no puede alcanzar. El cambio es visible y progresivo semana a semana.</p>
+      </div>
+      <div class="res-card reveal">
+        <p class="res-num">02</p>
+        <h3>Reducción de grasa y mejor composición</h3>
+        <p>Al aumentar la masa muscular activa, el cuerpo consume más energía de forma eficiente. Transformación real de la composición corporal sin dietas extremas.</p>
+      </div>
+      <div class="res-card reveal">
+        <p class="res-num">03</p>
+        <h3>Firmeza de piel y recuperación</h3>
+        <p>La activación muscular mejora la circulación y el drenaje linfático, lo que se traduce en mayor firmeza, luminosidad y una recuperación más rápida.</p>
+      </div>
+      <div class="res-card reveal">
+        <p class="res-num">04</p>
+        <h3>Más energía y vitalidad diaria</h3>
+        <p>Un cuerpo activo es un cuerpo con más vitalidad. Notarás la mejora en tu energía diaria, capacidad de movimiento y bienestar general desde las primeras semanas.</p>
+      </div>
+      <div class="res-card reveal">
+        <p class="res-num">05</p>
+        <h3>Reducción de inflamación</h3>
+        <p>Nuestros protocolos reducen la inflamación localizada y sistémica, mejoran el equilibrio de fluidos y apoyan el balance hormonal vinculado a la composición corporal.</p>
+      </div>
+      <div class="res-card reveal">
+        <p class="res-num">06</p>
+        <h3>Postura y presencia física refinada</h3>
+        <p>Con el tiempo, los cambios se consolidan en una definición visible, mejor postura y una presencia física más refinada. No cambio superficial — transformación estructural.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ═══ CONTACTO ═══════════════════════════════════════════ -->
-<section id="contacto">
+<!-- ═══ SPLIT: FACIAL ════════════════════════════════ -->
+<section id="facial">
   <div class="container">
-    <div class="contacto-layout">
+    <div class="facial-layout">
 
-      <div class="contacto-left">
-        <p class="eyebrow reveal">Contacto</p>
+      <div class="facial-left">
+        <p class="eyebrow reveal">Facial &amp; Skin Performance</p>
         <h2 class="reveal">
-          Da el<br/>
-          primer<br/>
-          <span class="gold-text">paso.</span>
+          La optimización<br/>
+          real no se<br/>
+          detiene en el<br/>
+          <span class="gold-text">cuerpo.</span>
         </h2>
         <p class="reveal">
-          Todo cambio comienza con una decisión. Probarlo es entenderlo. Rellena el formulario y uno de nuestros asesores de expansión se pondrá en contacto contigo para explicarte todos los detalles del modelo de franquicia.
+          Extendemos nuestra metodología a tratamientos faciales y de piel avanzados diseñados para complementar el trabajo muscular y elevar la apariencia global.
         </p>
-        <div class="cinfo reveal">
-          <div class="cinfo-row">
-            <span class="cinfo-lbl">Email</span>
-            <span class="cinfo-val">franquicias@thewonderclinic.com</span>
+        <blockquote class="reveal">
+          <p>"La piel es un reflejo de la función interna."</p>
+        </blockquote>
+        <p class="reveal">
+          Al combinar la activación neuromuscular con tecnologías estéticas dirigidas, mejoramos tanto la estructura como la superficie. El resultado no es un cambio artificial, sino una mejora refinada y natural.
+        </p>
+        <a href="#planes" class="btn btn-gold reveal">Ver todos los protocolos</a>
+      </div>
+
+      <div class="facial-right">
+        <div class="facial-item reveal">
+          <p class="facial-item-n">01</p>
+          <h3>Colágeno &amp; Elastina</h3>
+          <p>Estimulación de la producción de colágeno y elastina para mejorar la firmeza y elasticidad de la piel desde dentro.</p>
+        </div>
+        <div class="facial-item reveal">
+          <p class="facial-item-n">02</p>
+          <h3>Textura &amp; Luminosidad</h3>
+          <p>Mejora de la textura, el tono y la luminosidad de la piel. Reducción de signos de fatiga e inflamación visible.</p>
+        </div>
+        <div class="facial-item reveal">
+          <p class="facial-item-n">03</p>
+          <h3>Lifting Muscular Natural</h3>
+          <p>Tonificación de la musculatura facial para efectos lifting naturales sin necesidad de procedimientos invasivos.</p>
+        </div>
+        <div class="facial-item reveal">
+          <p class="facial-item-n">04</p>
+          <h3>Drenaje &amp; Circulación</h3>
+          <p>Mejora de la circulación y el drenaje linfático facial para un rostro descansado, definido y alineado con un cuerpo de alto rendimiento.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ QUOTE ════════════════════════════════════════ -->
+<section id="quote">
+  <div class="quote-bg-text" aria-hidden="true">WONDER</div>
+  <div class="container">
+    <p class="eyebrow reveal" style="justify-content:center;">Nuestra filosofía</p>
+    <p class="quote-text reveal">
+      "No necesitas más tiempo.<br/>
+      Necesitas <span class="gold-text">mejores resultados</span><br/>
+      en menos tiempo."
+    </p>
+    <p class="quote-sub reveal">
+      La eficiencia es el nuevo estándar del lujo real. Una hora a la semana. Un sistema estructurado. Resultados sostenidos.
+    </p>
+    <p class="quote-source reveal">The Wonder Clinic — Longevity Hour®</p>
+  </div>
+</section>
+
+<!-- ═══ PLANES / PRECIOS ════════════════════════════ -->
+<section id="planes">
+  <div class="container">
+    <div class="planes-header">
+      <p class="eyebrow reveal" style="justify-content:center;">Inversión en tu cuerpo</p>
+      <h2 class="reveal">
+        La pregunta no es<br/>
+        si puedes permitírtelo.<br/>
+        Es si puedes<br/>
+        <span class="gold-text">ignorarlo.</span>
+      </h2>
+      <p class="reveal">Planes diseñados para diferentes niveles de compromiso y objetivos. Disponibilidad limitada para garantizar calidad, precisión y resultados.</p>
+    </div>
+
+    <div class="planes-grid">
+
+      <!-- Plan Signature -->
+      <div class="plan-card reveal">
+        <p class="plan-name">Longevity Hour® Program</p>
+        <h3>Signature<br/>Plan</h3>
+        <p class="plan-sessions">4 sesiones al mes</p>
+        <div class="plan-divider"></div>
+        <p class="plan-price gold-text">380<small style="font-size:.4em">€</small></p>
+        <p class="plan-price-period">al mes</p>
+        <ul class="plan-features">
+          <li>4 sesiones mensuales de Longevity Hour®</li>
+          <li>Evaluación continua y seguimiento de progreso</li>
+          <li>Protocolo corporal personalizado</li>
+          <li>Acceso a la red de centros certificados</li>
+        </ul>
+        <a href="#contacto-form" class="btn btn-outline" style="width:100%;text-align:center;display:block;">Empezar ahora</a>
+      </div>
+
+      <!-- Plan Elite -->
+      <div class="plan-card plan-card--featured reveal">
+        <span class="plan-badge">Más elegido</span>
+        <p class="plan-name">Elite Plan</p>
+        <h3>Elite<br/>Plan</h3>
+        <p class="plan-sessions">8 sesiones al mes</p>
+        <div class="plan-divider"></div>
+        <p class="plan-price gold-text">675<small style="font-size:.4em">€</small></p>
+        <p class="plan-price-period">al mes</p>
+        <ul class="plan-features">
+          <li>8 sesiones mensuales de Longevity Hour®</li>
+          <li>Personalización completa y optimización avanzada</li>
+          <li>Protocolo integrado cuerpo y rostro</li>
+          <li>Seguimiento de composición corporal</li>
+          <li>Acceso prioritario a nuevos protocolos</li>
+        </ul>
+        <a href="#contacto-form" class="btn btn-gold" style="width:100%;text-align:center;display:block;">Empezar ahora</a>
+      </div>
+
+      <!-- Plan Private -->
+      <div class="plan-card reveal">
+        <p class="plan-name">Longevity Private Plan</p>
+        <h3>Private<br/>Plan</h3>
+        <p class="plan-sessions">Acceso ilimitado + gestión integral</p>
+        <div class="plan-divider"></div>
+        <p class="plan-price gold-text">2.500<small style="font-size:.35em">€</small></p>
+        <p class="plan-price-period">desde / al mes</p>
+        <ul class="plan-features">
+          <li>El máximo nivel de personalización y discreción</li>
+          <li>Acceso avanzado y atención exclusiva</li>
+          <li>Protocolos integrados corporales y faciales</li>
+          <li>Monitorización y ajuste continuo</li>
+          <li>Disponibilidad limitada — plazas muy reducidas</li>
+        </ul>
+        <a href="#contacto-form" class="btn btn-outline" style="width:100%;text-align:center;display:block;">Solicitar información</a>
+        <p class="plan-note">* Disponibilidad limitada. Contacto previo requerido.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACTO FORM ════════════════════════════════ -->
+<section id="contacto-form" style="padding: 0 0 140px;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1.3fr;gap:100px;align-items:start;">
+
+      <div>
+        <p class="eyebrow reveal">Reserva tu sesión</p>
+        <h2 class="reveal" style="font-family:var(--ff);font-size:clamp(32px,4vw,56px);font-weight:900;text-transform:uppercase;letter-spacing:-1.5px;line-height:.93;margin-bottom:24px;">
+          Da el<br/>primer<br/><span class="gold-text">paso.</span>
+        </h2>
+        <p class="reveal" style="font-family:var(--ff-body);font-size:15px;font-weight:300;line-height:1.9;color:var(--muted);margin-bottom:44px;">
+          Todo cambio comienza con una decisión. Probarlo es entenderlo. Sentirlo es creerlo. Rellena el formulario y nos ponemos en contacto contigo en menos de 24 horas.
+        </p>
+        <div class="reveal" style="display:flex;flex-direction:column;gap:18px;">
+          <div style="display:flex;gap:20px;align-items:flex-start;">
+            <span style="font-family:var(--ff);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);min-width:72px;padding-top:1px;">Email</span>
+            <span style="font-family:var(--ff-body);font-size:13px;font-weight:300;color:var(--muted);">info@thewonderclinic.com</span>
           </div>
-          <div class="cinfo-row">
-            <span class="cinfo-lbl">Teléfono</span>
-            <span class="cinfo-val">+34 000 000 000</span>
-          </div>
-          <div class="cinfo-row">
-            <span class="cinfo-lbl">Horario</span>
-            <span class="cinfo-val">Lunes a Viernes, 9:00 – 18:00 h</span>
+          <div style="display:flex;gap:20px;align-items:flex-start;">
+            <span style="font-family:var(--ff);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);min-width:72px;padding-top:1px;">Teléfono</span>
+            <span style="font-family:var(--ff-body);font-size:13px;font-weight:300;color:var(--muted);">+34 000 000 000</span>
           </div>
         </div>
       </div>
 
-      <form class="cform reveal" id="contactForm">
-        <div class="cform-row">
-          <div class="fgroup">
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+      <form id="mainForm" class="reveal" style="display:flex;flex-direction:column;gap:18px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <label style="font-family:var(--ff);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Nombre</label>
+            <input type="text" placeholder="Tu nombre" required style="background:var(--black-2);border:1px solid var(--gold-line);color:var(--white);font-family:var(--ff-body);font-size:14px;font-weight:300;padding:15px 18px;outline:none;transition:border-color .3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--gold-line)'" />
           </div>
-          <div class="fgroup">
-            <label for="apellido">Apellido</label>
-            <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required />
-          </div>
-        </div>
-        <div class="cform-row">
-          <div class="fgroup">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="tu@email.com" required />
-          </div>
-          <div class="fgroup">
-            <label for="telefono">Teléfono</label>
-            <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000" />
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <label style="font-family:var(--ff);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Apellido</label>
+            <input type="text" placeholder="Tu apellido" style="background:var(--black-2);border:1px solid var(--gold-line);color:var(--white);font-family:var(--ff-body);font-size:14px;font-weight:300;padding:15px 18px;outline:none;transition:border-color .3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--gold-line)'" />
           </div>
         </div>
-        <div class="fgroup">
-          <label for="pais">País / Ciudad de interés</label>
-          <input type="text" id="pais" name="pais" placeholder="España, México, Colombia..." />
+        <div style="display:flex;flex-direction:column;gap:7px;">
+          <label style="font-family:var(--ff);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Email</label>
+          <input type="email" placeholder="tu@email.com" required style="background:var(--black-2);border:1px solid var(--gold-line);color:var(--white);font-family:var(--ff-body);font-size:14px;font-weight:300;padding:15px 18px;outline:none;transition:border-color .3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--gold-line)'" />
         </div>
-        <div class="fgroup">
-          <label for="inversion">Capacidad de inversión</label>
-          <select id="inversion" name="inversion">
-            <option value="" disabled selected>Selecciona un rango</option>
-            <option>Hasta 70.000 €</option>
-            <option>70.000 € – 120.000 €</option>
-            <option>Más de 120.000 €</option>
-            <option>Quiero más información primero</option>
+        <div style="display:flex;flex-direction:column;gap:7px;">
+          <label style="font-family:var(--ff);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Plan de interés</label>
+          <select style="background:var(--black-2);border:1px solid var(--gold-line);color:var(--white);font-family:var(--ff-body);font-size:14px;font-weight:300;padding:15px 18px;outline:none;appearance:none;-webkit-appearance:none;transition:border-color .3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--gold-line)'">
+            <option value="" disabled selected>Selecciona un plan</option>
+            <option>Signature Plan — 380 €/mes</option>
+            <option>Elite Plan — 675 €/mes</option>
+            <option>Longevity Private Plan</option>
+            <option>Quiero información general</option>
           </select>
         </div>
-        <div class="fgroup">
-          <label for="mensaje">Mensaje</label>
-          <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu proyecto, experiencia en el sector o cualquier pregunta que tengas..."></textarea>
+        <div style="display:flex;flex-direction:column;gap:7px;">
+          <label style="font-family:var(--ff);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Mensaje</label>
+          <textarea placeholder="Cuéntanos tu objetivo, disponibilidad o cualquier pregunta..." style="background:var(--black-2);border:1px solid var(--gold-line);color:var(--white);font-family:var(--ff-body);font-size:14px;font-weight:300;padding:15px 18px;outline:none;min-height:120px;resize:vertical;transition:border-color .3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--gold-line)'"></textarea>
         </div>
-        <button type="submit" class="btn-submit">Solicitar información de franquicia</button>
+        <button type="submit" style="font-family:var(--ff);font-size:10px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;padding:19px 0;background:var(--gold);color:var(--black);border:1px solid var(--gold);cursor:pointer;width:100%;transition:background .3s,color .3s,transform .25s;" onmouseover="this.style.background='transparent';this.style.color='var(--gold)'" onmouseout="this.style.background='var(--gold)';this.style.color='var(--black)'">Reservar mi sesión</button>
       </form>
 
     </div>
   </div>
 </section>
 
-<!-- ═══ FOOTER ═════════════════════════════════════════════ -->
+<!-- ═══ CTA FRANQUICIA ══════════════════════════════ -->
+<section id="franquicia-cta">
+  <div class="fcta-bg" aria-hidden="true">FRANCHISE</div>
+  <div class="container">
+    <div class="fcta-inner">
+      <p class="eyebrow reveal" style="justify-content:center;">Para inversores y emprendedores</p>
+      <h2 class="reveal">
+        ¿Quieres abrir<br/>
+        tu propio centro<br/>
+        <span class="gold-text">Wonder Clinic?</span>
+      </h2>
+      <p class="reveal">
+        Modelo de negocio probado, inversión optimizada y demanda creciente. Únete a la red de franquiciados que está transformando el mercado del bienestar premium antes de que el mercado madure.
+      </p>
+      <div class="fcta-actions reveal">
+        <a href="franquicia.html" class="btn btn-gold">Quiero abrir mi centro</a>
+        <a href="franquicia.html#contacto" class="btn-ghost">Ver el modelo de franquicia</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ══════════════════════════════════════ -->
 <footer>
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
         <img src="Logo the wonder clinic.png" alt="The Wonder Clinic" />
-        <p>The Wonder Clinic es la franquicia de muscle sculpting y wellness premium de referencia. Tecnología avanzada que transforma músculo, grasa y piel con precisión científica desde Madrid para el mundo.</p>
+        <p>Creadores del Método. Operadores de Longevity Hour®. Tratamientos de biohacking neuromuscular para la optimización total del cuerpo, disponibles en centros certificados exclusivos.</p>
       </div>
       <div class="footer-col">
         <h4>Navegación</h4>
         <ul>
-          <li><a href="#conocenos">Conócenos</a></li>
-          <li><a href="#tratamientos">Tratamientos</a></li>
-          <li><a href="#modelo">Modelo de Franquicia</a></li>
-          <li><a href="#financiero">Modelo Financiero</a></li>
-          <li><a href="#porque">Por qué elegirnos</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#longevity">Longevity Hour®</a></li>
+          <li><a href="#metodo">El Método</a></li>
+          <li><a href="#resultados">Resultados</a></li>
+          <li><a href="#facial">Facial &amp; Skin</a></li>
+          <li><a href="#planes">Planes</a></li>
+          <li><a href="franquicia.html">Franquicias</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1526,11 +1550,11 @@
   </div>
 </footer>
 
-<!-- ═══ SCRIPTS ════════════════════════════════════════════ -->
+<!-- ═══ SCRIPTS ══════════════════════════════════════ -->
 <script>
   gsap.registerPlugin(ScrollTrigger);
 
-  // ── Nav scroll state ─────────────────────────────────
+  // Nav scroll
   ScrollTrigger.create({
     start: 'top -60',
     onUpdate(self) {
@@ -1538,33 +1562,30 @@
     }
   });
 
-  // ── Hero entrance ────────────────────────────────────
+  // Hero entrance
   const htl = gsap.timeline({ delay: 0.2 });
   htl
-    .to('#heroTag', { opacity: 1, y: 0, duration: .7, ease: 'power2.out' })
-    .to('.hero-title-inner', {
-      opacity: 1, y: 0,
-      duration: .9, stagger: .12, ease: 'power3.out'
-    }, '-=.3')
-    .to('#heroSub',     { opacity: 1, y: 0, duration: .8, ease: 'power2.out' }, '-=.5')
-    .to('#heroActions', { opacity: 1, y: 0, duration: .7, ease: 'power2.out' }, '-=.4');
+    .to('#heroTag',     { opacity:1, y:0, duration:.7, ease:'power2.out' })
+    .to('.hero-title-inner', { opacity:1, y:0, duration:.9, stagger:.1, ease:'power3.out' }, '-=.3')
+    .to('#heroSub',     { opacity:1, y:0, duration:.7, ease:'power2.out' }, '-=.5')
+    .to('#heroDesc',    { opacity:1, y:0, duration:.7, ease:'power2.out' }, '-=.5')
+    .to('#heroActions', { opacity:1, y:0, duration:.6, ease:'power2.out' }, '-=.4');
 
-
-  // ── Ticker ────────────────────────────────────────────
+  // Ticker
   const ticker = document.getElementById('ticker');
   const tw = ticker.scrollWidth / 3;
-  gsap.to(ticker, { x: -tw, duration: 24, ease: 'none', repeat: -1 });
+  gsap.to(ticker, { x: -tw, duration: 26, ease: 'none', repeat: -1 });
 
-  // ── Scroll reveals ────────────────────────────────────
+  // Scroll reveals
   ScrollTrigger.batch('.reveal', {
     start: 'top 90%',
     once: true,
     onEnter(els) {
-      gsap.to(els, { opacity: 1, y: 0, duration: .8, stagger: .08, ease: 'power3.out' });
+      gsap.to(els, { opacity:1, y:0, duration:.8, stagger:.08, ease:'power3.out' });
     }
   });
 
-  // ── Number counters ───────────────────────────────────
+  // Counters
   document.querySelectorAll('[data-target]').forEach(el => {
     const target = +el.dataset.target;
     const small = el.querySelector('small')?.outerHTML || '';
@@ -1580,27 +1601,31 @@
     });
   });
 
-  // ── Manifesto BG text parallax ────────────────────────
-  gsap.to('.musculo-bg', {
-    x: '-10%', ease: 'none',
-    scrollTrigger: { trigger: '#musculo', start: 'top bottom', end: 'bottom top', scrub: 1 }
+  // BG text parallax
+  gsap.to('.longevity-bg-text', {
+    x: '-10%', ease:'none',
+    scrollTrigger: { trigger:'#longevity', start:'top bottom', end:'bottom top', scrub:1 }
   });
-  gsap.to('.quote-bg', {
-    x: '-8%', ease: 'none',
-    scrollTrigger: { trigger: '#quote', start: 'top bottom', end: 'bottom top', scrub: 1 }
+  gsap.to('.quote-bg-text', {
+    x: '-8%', ease:'none',
+    scrollTrigger: { trigger:'#quote', start:'top bottom', end:'bottom top', scrub:1 }
+  });
+  gsap.to('.fcta-bg', {
+    x: '-8%', ease:'none',
+    scrollTrigger: { trigger:'#franquicia-cta', start:'top bottom', end:'bottom top', scrub:1 }
   });
 
-  // ── Form submit ───────────────────────────────────────
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
+  // Form
+  document.getElementById('mainForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const btn = this.querySelector('.btn-submit');
+    const btn = this.querySelector('button[type=submit]');
     const orig = btn.textContent;
-    btn.textContent = 'Enviado — nos pondremos en contacto pronto';
-    btn.style.cssText = 'background:transparent;color:var(--gold);cursor:default;';
+    btn.textContent = 'Enviado — te contactamos pronto';
+    btn.style.cssText = 'font-family:var(--ff);font-size:10px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;padding:19px 0;background:transparent;color:var(--gold);border:1px solid var(--gold);cursor:default;width:100%;';
     btn.disabled = true;
     setTimeout(() => {
       btn.textContent = orig;
-      btn.style.cssText = '';
+      btn.style.cssText = 'font-family:var(--ff);font-size:10px;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;padding:19px 0;background:var(--gold);color:var(--black);border:1px solid var(--gold);cursor:pointer;width:100%;transition:background .3s,color .3s,transform .25s;';
       btn.disabled = false;
       this.reset();
     }, 5000);
