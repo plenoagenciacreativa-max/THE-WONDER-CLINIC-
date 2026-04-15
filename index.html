@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Merriweather:wght@700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -25,6 +25,7 @@
       --muted:      rgba(248,246,242,0.5);
       --muted2:     rgba(248,246,242,0.28);
       --ff:         'Montserrat', sans-serif;
+      --ff-title:   'Merriweather', serif;
       --ff-body:    'Inter', sans-serif;
       --nav-h:      80px;
     }
@@ -41,6 +42,7 @@
     }
     img { display: block; max-width: 100%; }
     a   { text-decoration: none; color: inherit; }
+    h1, h2, h3 { font-family: var(--ff-title) !important; }
     ::selection { background: var(--gold); color: var(--black); }
     ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-track { background: var(--black); }
@@ -192,7 +194,7 @@
       opacity: 0;
     }
     .hero-title {
-      font-family: var(--ff);
+      font-family: var(--ff-title);
       font-size: clamp(48px, 8vw, 112px);
       font-weight: 900;
       line-height: .92;
